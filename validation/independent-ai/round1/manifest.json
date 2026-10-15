@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "suite": "independent-contract-holdout-round1",
+  "createdAt": "2026-10-15T06:54:26Z",
+  "authorRole": "Independent AI fixture author; not a human expert reviewer",
+  "authorIdentity": "Separate delegated AI agent with blind contract-only task",
+  "sourceContract": "work/automotive-interface-workflow-toolkit/IMPORT-CONTRACT.md",
+  "caseCount": 18,
+  "independence": {
+    "readApplicationImplementation": false,
+    "readOtherFixtures": false,
+    "executedWorkbench": false,
+    "sawImplementerExpectedCodingChoices": false,
+    "sourceRead": "Only the original input contract supplied in the delegation was inspected for task content.",
+    "humanExpertValidation": false
+  },
+  "purpose": "AI-generated holdout evidence for conservative release assessment, malformed graph handling, calendar CPM arithmetic, cost separation and process-control cross-checks. This is not industrial expert validation or certification evidence.",
+  "designRationale": "Eighteen self-contained bundles include clean GO and valid CONDITIONAL controls to detect false positives; omitted manifests, unapproved or future approval, critical non-waivable rejection, expired and scope-mismatched concessions, unapproved changes, numeric override, evidence graph defects, schedule graph defects and PFMEA-Control Plan omissions exercise conservative failure paths. A calendar-only fork/join with an FS lag yields hand-calculated finish, float, slip and cost. No business-calendar or local-time assumptions are needed.",
+  "oracleInterpretation": {
+    "findingCodes": "Generic independent semantic labels, not implementation identifiers. Additional truthful findings are allowed. Empty findingCodes is intended only for the fully controlled clean GO case.",
+    "reviewRequired": "For schedule and PFMEA invalidity, REVIEW_REQUIRED denotes a visible actionable review/invalid conclusion rather than a mandated literal aggregate status. The contract does not prescribe an aggregate status token for those conditions; an implementation may use HOLD or a separate domain review state. It must not silently certify invalid conclusions.",
+    "hold": "For missing manifest and unresolved mandatory approval, HOLD denotes absence of release acceptance. A stricter non-release state is semantically equivalent.",
+    "go": "GO describes release evidence acceptance. Forecast slip and EAC variance are reported independently; the contract does not state they automatically change release evidence status.",
+    "schedule": "Dates are exclusive finish boundaries. Exact numeric expectations are asserted only for the clean two-day case and the explicit calendar fork/join. Critical path and float use the unconstrained network finish, not SOP. Delay exposure is excluded from EAC.",
+    "citations": "PFMEA-Control Plan findings must identify the relevant input record rows. Parser-supplied provenance cannot be authored as trusted provenance by this fixture author."
+  },
+  "sharing": "Authoring completed before notifying the implementing agent. Initial completion notice contains only directory, count and SHA256 values, with no expected outcomes."
+}

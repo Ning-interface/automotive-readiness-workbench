@@ -1,0 +1,248 @@
+{
+  "cases": [
+    {
+      "id": "blind-r1-01",
+      "name": "Approved release with a controlled process and ordinary calendar work",
+      "input": {
+        "project": {"id":"IB-01","name":"Independent brake interface","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","currency":"CNY","budget":2000,"spent":500,"overheadPerDay":20,"delayCostPerDay":50,"calendar":"calendar","holidays":[]},
+        "requirements": [{"id":"R1","name":"Interface verification","from":"A","critical":false}],
+        "evidence": [{"id":"R1","name":"Interface verification report","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "tasks": [{"id":"T1","name":"Release preparation","duration":2,"remainingDays":2,"predecessors":[],"costPerDay":100,"fixedCost":50}],
+        "pfmea": [{"id":"F1","operationId":"OP10","failureMode":"Incorrect torque","severity":5,"specialCharacteristic":false,"detectionControl":"Automatic torque trace compared with limits"}],
+        "controlPlan": [{"id":"CP1","operationId":"OP10","characteristic":"Torque","specialCharacteristic":false,"method":"Automatic torque trace compared with limits","frequency":"Every assembly","reactionPlan":"Stop, segregate and verify affected assemblies","owner":"Process Owner"}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"GO","findingCodes":[],"schedule":{"finish":"2026-03-03","slipDays":0,"eac":790}},
+      "rationale": "False-positive control: the sole applicable requirement has approved current evidence, the process has a substantive control and reaction plan, and the schedule is valid. Direct remaining cost is 250 and two days of overhead are 40; spent 500 gives EAC 790."
+    },
+    {
+      "id": "blind-r1-02",
+      "name": "Explicit noncritical concession remains conditional",
+      "input": {
+        "project": {"id":"IB-02","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","budget":2000,"spent":500,"overheadPerDay":20,"delayCostPerDay":50,"calendar":"calendar"},
+        "requirements": [{"id":"R1","name":"Packaging validation","from":"A","critical":false}],
+        "evidence": [{"id":"R1","name":"Packaging validation","status":"open","revision":"R1","owner":"Packaging Owner","acceptance":"Validation complete","result":"Pending","dependencies":[]}],
+        "waivers": [{"id":"W1","evidence":"R1","approved":true,"authority":"Program Authority","scope":"EV-BRAKE","allowedGates":["C"],"expires":"2026-03-31","signedAt":"2026-02-27","restriction":"Limited pilot packaging only; complete validation before SOP"}],
+        "tasks": [{"id":"T1","duration":2,"remainingDays":2,"predecessors":[],"costPerDay":100,"fixedCost":50}],
+        "changes": [], "pfmea": [], "controlPlan": []
+      },
+      "expected": {"status":"CONDITIONAL","findingCodes":["ACTIVE_NONCRITICAL_CONCESSION"],"schedule":{"finish":"2026-03-03","slipDays":0,"eac":790}},
+      "rationale": "False-positive control: every concession field is supplied, its scope and gate match, signature is in the past, and expiry covers as-of and SOP. A noncritical open requirement can be conceded, but cannot become GO."
+    },
+    {
+      "id": "blind-r1-03",
+      "name": "A perfect-looking report cannot substitute for the requirements manifest",
+      "input": {
+        "project": {"id":"IB-03","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "tasks": [], "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["REQUIREMENTS_MANIFEST_MISSING"]},
+      "rationale": "Requirements are omitted entirely, so completeness is unknown. Supplied verified evidence does not establish the universe of mandatory requirements; GO is forbidden. HOLD denotes the expected non-release disposition."
+    },
+    {
+      "id": "blind-r1-04",
+      "name": "Verified text with no approval identity",
+      "input": {
+        "project": {"id":"IB-04","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"Pass all interface tests","result":"Pass","dependencies":[]}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["EVIDENCE_APPROVAL_MISSING"]},
+      "rationale": "The reviewer field is absent. A supplied status and passing result cannot satisfy the explicit reviewer prerequisite."
+    },
+    {
+      "id": "blind-r1-05",
+      "name": "Closed action is an unknown approval status",
+      "input": {
+        "project": {"id":"IB-05","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"closed","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"Pass all interface tests","result":"Pass","dependencies":[]}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["UNKNOWN_EVIDENCE_STATUS"]},
+      "rationale": "Closed is outside verified/open/rejected and is explicitly insufficient as evidence approval. The release cannot pass by normalizing this word into verified."
+    },
+    {
+      "id": "blind-r1-06",
+      "name": "Future review date invalidates an otherwise approved report",
+      "input": {
+        "project": {"id":"IB-06","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-03-02","owner":"Owner One","acceptance":"Pass all interface tests","result":"Pass","dependencies":[]}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["FUTURE_REVIEW_DATE"]},
+      "rationale": "Review occurs one day after the assessment. The valid-looking ISO date is future rather than malformed; approval is invalid as of the selected date."
+    },
+    {
+      "id": "blind-r1-07",
+      "name": "Authority signature cannot waive critical rejected evidence",
+      "input": {
+        "project": {"id":"IB-07","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "requirements": [{"id":"R1","from":"A","critical":true}],
+        "evidence": [{"id":"R1","status":"rejected","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"No leakage","result":"Leak observed","dependencies":[]}],
+        "waivers": [{"id":"W1","evidence":"R1","approved":true,"authority":"Program Authority","scope":"EV-BRAKE","allowedGates":["C"],"expires":"2026-03-31","signedAt":"2026-02-27","restriction":"Pilot assemblies only"}],
+        "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["CRITICAL_EVIDENCE_REJECTED","CRITICAL_REQUIREMENT_NONWAIVABLE"]},
+      "rationale": "Critical requirements are non-waivable hard stops. A structurally complete and otherwise valid waiver cannot reduce this to CONDITIONAL."
+    },
+    {
+      "id": "blind-r1-08",
+      "name": "Expired concession leaves the requirement unresolved",
+      "input": {
+        "project": {"id":"IB-08","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"open","revision":"R1","owner":"Owner One","acceptance":"Validation complete","result":"Pending","dependencies":[]}],
+        "waivers": [{"id":"W1","evidence":"R1","approved":true,"authority":"Program Authority","scope":"EV-BRAKE","allowedGates":["C"],"expires":"2026-02-28","signedAt":"2026-02-20","restriction":"Pilot assemblies only"}],
+        "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["WAIVER_EXPIRED","MANDATORY_EVIDENCE_UNRESOLVED"]},
+      "rationale": "Expiry precedes the assessment by one day. A past approval cannot support a current concession."
+    },
+    {
+      "id": "blind-r1-09",
+      "name": "Concession for another agreed scope does not transfer",
+      "input": {
+        "project": {"id":"IB-09","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"open","revision":"R1","owner":"Owner One","acceptance":"Validation complete","result":"Pending","dependencies":[]}],
+        "waivers": [{"id":"W1","evidence":"R1","approved":true,"authority":"Program Authority","scope":"EV-STEERING","allowedGates":["C"],"expires":"2026-03-31","signedAt":"2026-02-20","restriction":"Pilot assemblies only"}],
+        "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["WAIVER_SCOPE_MISMATCH","MANDATORY_EVIDENCE_UNRESOLVED"]},
+      "rationale": "All concession fields are present, but the explicit scope agreement differs. Similar project context is not authority to broaden a waiver."
+    },
+    {
+      "id": "blind-r1-10",
+      "name": "A current report is invalidated by an unapproved affecting change",
+      "input": {
+        "project": {"id":"IB-10","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "changes": [{"id":"CH1","revision":"R1","status":"pending","affectedEvidence":["R1"]}],
+        "waivers": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["UNAPPROVED_CHANGE_INVALIDATES_EVIDENCE"]},
+      "rationale": "The affected evidence ID matches exactly. Revision equality alone does not preserve approval when the change remains pending."
+    },
+    {
+      "id": "blind-r1-11",
+      "name": "Failing measured value overrides passing prose and verified status",
+      "input": {
+        "project": {"id":"IB-11","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"Pressure in the inclusive range 9 to 11 bar","result":"PASS - approved","dependencies":[],"value":11.01,"min":9,"max":11,"unit":"bar"}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["NUMERIC_BOUND_FAILURE_OVERRIDES_VERIFIED"]},
+      "rationale": "11.01 exceeds the upper limit 11. The independently specified measured result wins over both approval status and the PASS string."
+    },
+    {
+      "id": "blind-r1-12",
+      "name": "Evidence dependency cycle cannot approve itself",
+      "input": {
+        "project": {"id":"IB-12","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false},{"id":"R2","from":"A","critical":false}],
+        "evidence": [
+          {"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"R2 approved first","result":"Pass","dependencies":["R2"]},
+          {"id":"R2","status":"verified","revision":"R1","reviewer":"Reviewer Two","reviewedAt":"2026-02-28","owner":"Owner Two","acceptance":"R1 approved first","result":"Pass","dependencies":["R1"]}
+        ],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["EVIDENCE_DEPENDENCY_CYCLE"]},
+      "rationale": "Neither circular prerequisite has an independent valid approval path. Traversal must terminate and leave a visible unresolved dependency rather than accepting two verified labels."
+    },
+    {
+      "id": "blind-r1-13",
+      "name": "Missing dependent report is still mandatory for approval",
+      "input": {
+        "project": {"id":"IB-13","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"Supplier material report approved","result":"Pass","dependencies":["SUP-MAT-404"]}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"HOLD","findingCodes":["EVIDENCE_DEPENDENCY_MISSING"]},
+      "rationale": "The dependency ID is neither an evidence record nor a supplied approval. It cannot be dropped merely because it is not itself in the requirements manifest."
+    },
+    {
+      "id": "blind-r1-14",
+      "name": "Circular schedule prevents valid forecast conclusions",
+      "input": {
+        "project": {"id":"IB-14","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "tasks": [{"id":"A","duration":1,"predecessors":["B"]},{"id":"B","duration":1,"predecessors":["A"]}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"REVIEW_REQUIRED","findingCodes":["SCHEDULE_CYCLE","SCHEDULE_CONCLUSIONS_INVALID"]},
+      "rationale": "Release evidence is clean but the schedule has no topological ordering. REVIEW_REQUIRED expresses the required invalid-schedule disposition: it must not present a trusted finish, critical path, float or GO scheduling conclusion. The contract does not specify the literal UI severity token for this condition."
+    },
+    {
+      "id": "blind-r1-15",
+      "name": "Negative duration is an invalid input rather than an earlier finish",
+      "input": {
+        "project": {"id":"IB-15","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "tasks": [{"id":"A","duration":-2,"predecessors":[],"costPerDay":100,"fixedCost":0}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"REVIEW_REQUIRED","findingCodes":["NEGATIVE_TASK_DURATION","SCHEDULE_CONCLUSIONS_INVALID"]},
+      "rationale": "The negative duration is expressly outside the contract. It must remain visible and invalidate schedule conclusions rather than being clamped to zero or producing negative cost. The precise aggregate review token is not prescribed by the contract."
+    },
+    {
+      "id": "blind-r1-16",
+      "name": "Fork join with a lag separates critical path, slip and delay exposure",
+      "input": {
+        "project": {"id":"IB-16","name":"Fork join calendar case","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-08","gate":"C","revision":"R1","scope":"EV-BRAKE","currency":"CNY","budget":2000,"spent":500,"overheadPerDay":20,"delayCostPerDay":50,"calendar":"calendar","holidays":[]},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "tasks": [
+          {"id":"A","name":"Common preparation","duration":2,"remainingDays":2,"predecessors":[],"costPerDay":100,"fixedCost":10},
+          {"id":"B","name":"Short branch","duration":3,"remainingDays":3,"predecessors":["A"],"costPerDay":200,"fixedCost":20},
+          {"id":"C","name":"Long branch","duration":5,"remainingDays":5,"predecessors":["A"],"costPerDay":50,"fixedCost":30},
+          {"id":"D","name":"Joint release","duration":1,"remainingDays":1,"predecessors":["B","C:FS+1"],"costPerDay":400,"fixedCost":40}
+        ],
+        "waivers": [], "changes": [], "pfmea": [], "controlPlan": []
+      },
+      "expected": {"status":"GO","schedule":{"finish":"2026-03-10","slipDays":2,"eac":2230,"remainingDirect":1550,"remainingOverhead":180,"delayExposure":100,"budgetVariance":230,"criticalTasks":["A","C","D"],"totalFloat":{"A":0,"B":3,"C":0,"D":0}}},
+      "rationale": "Evidence approval remains GO; the contract does not say schedule slip or budget overrun alone changes the release disposition. A ends March 3, B March 6, C March 8; its one-day lag allows D to start March 9 and finish March 10. The network spans nine calendar days. Direct cost is 210+620+280+440=1550; overhead is 180, so EAC is 500+1550+180=2230. Two days of delay exposure are 100 and must remain separate. B can slip three days without delaying D."
+    },
+    {
+      "id": "blind-r1-17",
+      "name": "PFMEA and Control Plan contain multiple independently visible omissions",
+      "input": {
+        "project": {"id":"IB-17","asOf":"2026-03-01","gate":"C","revision":"R1","scope":"EV-BRAKE"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "pfmea": [
+          {"id":"F1","operationId":"OP10","failureMode":"Brake pressure loss","severity":10,"specialCharacteristic":true,"detectionControl":"Visual inspection only"},
+          {"id":"F2","operationId":"OP20","failureMode":"Fastener omitted","severity":7,"specialCharacteristic":true,"detectionControl":""}
+        ],
+        "controlPlan": [
+          {"id":"CP1","operationId":"OP10","characteristic":"Seal appearance","specialCharacteristic":false,"method":"Visual inspection only","frequency":"First piece","reactionPlan":"","owner":"Inspector"},
+          {"id":"CP2","operationId":"OP99","characteristic":"Torque","specialCharacteristic":true,"method":"Electronic torque trace","frequency":"Every assembly","reactionPlan":"Stop and segregate","owner":"Process Owner"}
+        ],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"REVIEW_REQUIRED","findingCodes":["PROCESS_STEP_CONTROL_MISSING","UNCONTROLLED_SPECIAL_CHARACTERISTIC","REACTION_PLAN_MISSING","VISUAL_ONLY_DETECTION","HIGH_SEVERITY_WEAK_CONTROL"]},
+      "rationale": "F1 has high severity, a special characteristic and visual-only detection; CP1 omits the special flag and reaction plan. F2 at OP20 has no matching control. CP2 at OP99 cannot satisfy OP20 merely because it contains a torque characteristic. Each inconsistency must cite its own supplied rows. These are review findings, not a claim of certification failure. REVIEW_REQUIRED is a semantic review expectation, since the contract does not define an aggregate PFMEA release token."
+    },
+    {
+      "id": "blind-r1-18",
+      "name": "Missing task predecessor must not be treated as project start",
+      "input": {
+        "project": {"id":"IB-18","asOf":"2026-03-01","startDate":"2026-03-01","sop":"2026-03-10","gate":"C","revision":"R1","scope":"EV-BRAKE","calendar":"calendar"},
+        "requirements": [{"id":"R1","from":"A","critical":false}],
+        "evidence": [{"id":"R1","status":"verified","revision":"R1","reviewer":"Reviewer One","reviewedAt":"2026-02-28","owner":"Owner One","acceptance":"All checks pass","result":"Pass","dependencies":[]}],
+        "tasks": [{"id":"A","duration":2,"predecessors":["UNIMPORTED-PREDECESSOR"],"costPerDay":100,"fixedCost":0}],
+        "waivers": [], "changes": []
+      },
+      "expected": {"status":"REVIEW_REQUIRED","findingCodes":["TASK_PREDECESSOR_MISSING","SCHEDULE_CONCLUSIONS_INVALID"]},
+      "rationale": "The absent upstream task makes the schedule incomplete even though task A has a normal duration. REVIEW_REQUIRED represents invalid schedule conclusions, with no asserted exact UI token. Silently scheduling A on March 1 would create false certainty."
+    }
+  ]
+}

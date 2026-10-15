@@ -1,0 +1,17 @@
+{
+  "kind":"independent-ai-final-candidate-regression-adjudication",
+  "createdAt":"2026-10-15T07:29:52Z",
+  "humanExpertValidation":false,
+  "newBlindEvaluation":false,
+  "engineSha256":"71ccdcd4def824dedced06df614080c6eabbbf9020dbe2a6bc8eba5356f4479d",
+  "suiteSha256":"4bf3510bb56ff3545859200ae1d31117269ebbf365cce85c2dd11b7ccd24c132",
+  "fixturesAndExpectedValuesUnchanged":true,
+  "implementationInspected":false,
+  "rawScore":{"passed":2,"failed":16,"total":18},
+  "semanticAdjudication":{"accepted":18,"provenBehavioralFailures":0,"total":18},
+  "comparisonToPriorRegression":{"changedCaseResults":0,"allChecksPlansFindingsAndLocationsIdentical":true,"priorArtifact":"regression-results.json"},
+  "assessment":"The sixteen remaining literal failures are exactly the previously adjudicated generic finding-name differences and two permitted conservative status differences. The final candidate retains the same valid GO and CONDITIONAL controls, all fifteen schedule/CPM/financial checks, valid=false output suppression for invalid networks and cited process-control findings. See regression-adjudication.json and initial-semantic-review.json for the preserved detailed rationale.",
+  "preservedHistory":{"initialRaw":"1/18 in initial-results.json","priorRegressionRaw":"2/18 in regression-results.json","allPriorArtifactsUnchanged":true},
+  "scopeLimit":"The frozen suite does not contain normalized-bundle reimports or malformed documents collections, so this run establishes no independent coverage of the newly reported hardening behavior. It checks regression of the original frozen cases only.",
+  "validationType":"Independent AI-authored disclosed regression, not a new blind pass, human expert validation, industrial certification, real-user validation or production-readiness claim."
+}

@@ -1,0 +1,1894 @@
+{
+  "kind": "independent-ai-fixture-evaluation",
+  "humanExpertValidation": false,
+  "generatedAt": "2026-10-15T07:29:42.905Z",
+  "engineSha256": "71ccdcd4def824dedced06df614080c6eabbbf9020dbe2a6bc8eba5356f4479d",
+  "suiteSha256": "4bf3510bb56ff3545859200ae1d31117269ebbf365cce85c2dd11b7ccd24c132",
+  "suitePath": "cases.json",
+  "total": 18,
+  "passed": 2,
+  "failed": 16,
+  "results": [
+    {
+      "id": "blind-r1-01",
+      "name": "Approved release with a controlled process and ordinary calendar work",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "GO",
+          "actual": "GO",
+          "pass": true
+        },
+        {
+          "metric": "schedule.finish",
+          "expected": "2026-03-03",
+          "actual": "2026-03-03",
+          "pass": true
+        },
+        {
+          "metric": "schedule.slipDays",
+          "expected": 0,
+          "actual": 0,
+          "pass": true
+        },
+        {
+          "metric": "schedule.eac",
+          "expected": 790,
+          "actual": 790,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "GO",
+      "plan": {
+        "available": true,
+        "valid": true,
+        "findings": [],
+        "tasks": [
+          {
+            "source": {
+              "file": "holdout/blind-r1-01.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "T1",
+                "name": "Release preparation",
+                "duration": 2,
+                "remainingDays": 2,
+                "predecessors": [],
+                "costPerDay": 100,
+                "fixedCost": 50
+              }
+            },
+            "id": "T1",
+            "name": "Release preparation",
+            "duration": 2,
+            "remainingDays": 2,
+            "predecessors": [],
+            "costPerDay": 100,
+            "fixedCost": 50,
+            "days": 2,
+            "links": [],
+            "es": 0,
+            "ef": 2,
+            "start": "2026-03-01",
+            "finish": "2026-03-03",
+            "lf": 2,
+            "ls": 0,
+            "float": 0,
+            "critical": true
+          }
+        ],
+        "finish": "2026-03-03",
+        "slipDays": 0,
+        "remainingDays": 2,
+        "critical": [
+          "T1"
+        ],
+        "direct": 250,
+        "remainingDirect": 250,
+        "overhead": 40,
+        "remainingOverhead": 40,
+        "spent": 500,
+        "eac": 790,
+        "budget": 2000,
+        "variance": -1210,
+        "budgetVariance": -1210,
+        "criticalTasks": [
+          "T1"
+        ],
+        "totalFloat": {
+          "T1": 0
+        },
+        "financialAssumptions": [],
+        "delayExposure": 0,
+        "overloads": [],
+        "calendar": "calendar",
+        "totalFloatMeaning": "Network float to the forecast finish; calendar slip is measured against SOP. Resource overload is reported, not leveled."
+      },
+      "findings": []
+    },
+    {
+      "id": "blind-r1-02",
+      "name": "Explicit noncritical concession remains conditional",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "CONDITIONAL",
+          "actual": "CONDITIONAL",
+          "pass": true
+        },
+        {
+          "metric": "schedule.finish",
+          "expected": "2026-03-03",
+          "actual": "2026-03-03",
+          "pass": true
+        },
+        {
+          "metric": "schedule.slipDays",
+          "expected": 0,
+          "actual": 0,
+          "pass": true
+        },
+        {
+          "metric": "schedule.eac",
+          "expected": 790,
+          "actual": 790,
+          "pass": true
+        },
+        {
+          "metric": "finding:ACTIVE_NONCRITICAL_CONCESSION",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "CONDITIONAL",
+      "plan": {
+        "available": true,
+        "valid": true,
+        "findings": [],
+        "tasks": [
+          {
+            "source": {
+              "file": "holdout/blind-r1-02.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "T1",
+                "duration": 2,
+                "remainingDays": 2,
+                "predecessors": [],
+                "costPerDay": 100,
+                "fixedCost": 50
+              }
+            },
+            "id": "T1",
+            "duration": 2,
+            "remainingDays": 2,
+            "predecessors": [],
+            "costPerDay": 100,
+            "fixedCost": 50,
+            "days": 2,
+            "links": [],
+            "es": 0,
+            "ef": 2,
+            "start": "2026-03-01",
+            "finish": "2026-03-03",
+            "lf": 2,
+            "ls": 0,
+            "float": 0,
+            "critical": true
+          }
+        ],
+        "finish": "2026-03-03",
+        "slipDays": 0,
+        "remainingDays": 2,
+        "critical": [
+          "T1"
+        ],
+        "direct": 250,
+        "remainingDirect": 250,
+        "overhead": 40,
+        "remainingOverhead": 40,
+        "spent": 500,
+        "eac": 790,
+        "budget": 2000,
+        "variance": -1210,
+        "budgetVariance": -1210,
+        "criticalTasks": [
+          "T1"
+        ],
+        "totalFloat": {
+          "T1": 0
+        },
+        "financialAssumptions": [],
+        "delayExposure": 0,
+        "overloads": [],
+        "calendar": "calendar",
+        "totalFloatMeaning": "Network float to the forecast finish; calendar slip is measured against SOP. Resource overload is reported, not leveled."
+      },
+      "findings": [
+        {
+          "code": "SCOPED_CONCESSION",
+          "severity": "warning",
+          "title": "Packaging validation",
+          "detail": "W1: Limited pilot packaging only; complete validation before SOP",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-02.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "name": "Packaging validation",
+                "status": "open",
+                "revision": "R1",
+                "owner": "Packaging Owner",
+                "acceptance": "Validation complete",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-02.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "name": "Packaging validation",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-03",
+      "name": "A perfect-looking report cannot substitute for the requirements manifest",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "REVIEW_REQUIRED",
+          "pass": false
+        },
+        {
+          "metric": "finding:REQUIREMENTS_MANIFEST_MISSING",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "UNDEFINED_REQUIREMENTS",
+          "severity": "high",
+          "title": "Release completeness is unknown",
+          "detail": "Import an agreed requirements manifest before interpreting a GO recommendation.",
+          "locations": [],
+          "recordIds": [],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-04",
+      "name": "Verified text with no approval identity",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:EVIDENCE_APPROVAL_MISSING",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-04.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "verified",
+                "revision": "R1",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "Pass all interface tests",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-04.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-05",
+      "name": "Closed action is an unknown approval status",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:UNKNOWN_EVIDENCE_STATUS",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-05.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "closed",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "Pass all interface tests",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-05.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-06",
+      "name": "Future review date invalidates an otherwise approved report",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:FUTURE_REVIEW_DATE",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-06.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "verified",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-03-02",
+                "owner": "Owner One",
+                "acceptance": "Pass all interface tests",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-06.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-07",
+      "name": "Authority signature cannot waive critical rejected evidence",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:CRITICAL_EVIDENCE_REJECTED",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:CRITICAL_REQUIREMENT_NONWAIVABLE",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REJECTED_EVIDENCE",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "The evidence reports a failed acceptance.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-07.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "rejected",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "No leakage",
+                "result": "Leak observed",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-07.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": true
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-08",
+      "name": "Expired concession leaves the requirement unresolved",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:WAIVER_EXPIRED",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:MANDATORY_EVIDENCE_UNRESOLVED",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-08.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "open",
+                "revision": "R1",
+                "owner": "Owner One",
+                "acceptance": "Validation complete",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-08.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-09",
+      "name": "Concession for another agreed scope does not transfer",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:WAIVER_SCOPE_MISMATCH",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:MANDATORY_EVIDENCE_UNRESOLVED",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-09.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "open",
+                "revision": "R1",
+                "owner": "Owner One",
+                "acceptance": "Validation complete",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-09.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-10",
+      "name": "A current report is invalidated by an unapproved affecting change",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:UNAPPROVED_CHANGE_INVALIDATES_EVIDENCE",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "UNAPPROVED_CHANGE",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "An affected change has no recorded approval; evidence must be reassessed.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-10.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "verified",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "All checks pass",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r1-10.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-11",
+      "name": "Failing measured value overrides passing prose and verified status",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:NUMERIC_BOUND_FAILURE_OVERRIDES_VERIFIED",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "OUT_OF_SPEC",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "Observed value 11.01 is outside the declared acceptance range.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-11.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "verified",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "Pressure in the inclusive range 9 to 11 bar",
+                "result": "PASS - approved",
+                "dependencies": [],
+                "value": 11.01,
+                "min": 9,
+                "max": 11,
+                "unit": "bar"
+              }
+            },
+            {
+              "file": "holdout/blind-r1-11.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-12",
+      "name": "Evidence dependency cycle cannot approve itself",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:EVIDENCE_DEPENDENCY_CYCLE",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "DEPENDENCY_CYCLE",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "An upstream evidence item is missing, cyclic or unverified.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-12.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "verified",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "R2 approved first",
+                "result": "Pass",
+                "dependencies": [
+                  "R2"
+                ]
+              }
+            },
+            {
+              "file": "holdout/blind-r1-12.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "DEPENDENCY_CYCLE",
+          "severity": "critical",
+          "title": "R2",
+          "detail": "An upstream evidence item is missing, cyclic or unverified.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-12.json",
+              "pointer": "/evidence/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "R2",
+                "status": "verified",
+                "revision": "R1",
+                "reviewer": "Reviewer Two",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner Two",
+                "acceptance": "R1 approved first",
+                "result": "Pass",
+                "dependencies": [
+                  "R1"
+                ]
+              }
+            },
+            {
+              "file": "holdout/blind-r1-12.json",
+              "pointer": "/requirements/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "R2",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R2",
+            "R2"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-13",
+      "name": "Missing dependent report is still mandatory for approval",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "finding:EVIDENCE_DEPENDENCY_MISSING",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "DEPENDENCY_NOT_VERIFIED",
+          "severity": "critical",
+          "title": "R1",
+          "detail": "An upstream evidence item is missing, cyclic or unverified.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-13.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "status": "verified",
+                "revision": "R1",
+                "reviewer": "Reviewer One",
+                "reviewedAt": "2026-02-28",
+                "owner": "Owner One",
+                "acceptance": "Supplier material report approved",
+                "result": "Pass",
+                "dependencies": [
+                  "SUP-MAT-404"
+                ]
+              }
+            },
+            {
+              "file": "holdout/blind-r1-13.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "R1",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "R1",
+            "R1"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-14",
+      "name": "Circular schedule prevents valid forecast conclusions",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "REVIEW_REQUIRED",
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "finding:SCHEDULE_CYCLE",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "metric": "finding:SCHEDULE_CONCLUSIONS_INVALID",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": true,
+        "valid": false,
+        "findings": [
+          {
+            "code": "SCHEDULE_CYCLE",
+            "severity": "high",
+            "title": "Task network contains a cycle",
+            "detail": "Remove cyclic dependencies before interpreting schedule or cost.",
+            "locations": [
+              {
+                "file": "holdout/blind-r1-14.json",
+                "pointer": "/tasks/0",
+                "declaredSource": null,
+                "raw": {
+                  "id": "A",
+                  "duration": 1,
+                  "predecessors": [
+                    "B"
+                  ]
+                }
+              },
+              {
+                "file": "holdout/blind-r1-14.json",
+                "pointer": "/tasks/1",
+                "declaredSource": null,
+                "raw": {
+                  "id": "B",
+                  "duration": 1,
+                  "predecessors": [
+                    "A"
+                  ]
+                }
+              }
+            ],
+            "recordIds": [
+              "A",
+              "B"
+            ],
+            "blocking": false
+          }
+        ],
+        "tasks": []
+      },
+      "findings": [
+        {
+          "code": "SCHEDULE_CYCLE",
+          "severity": "high",
+          "title": "Task network contains a cycle",
+          "detail": "Remove cyclic dependencies before interpreting schedule or cost.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-14.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "A",
+                "duration": 1,
+                "predecessors": [
+                  "B"
+                ]
+              }
+            },
+            {
+              "file": "holdout/blind-r1-14.json",
+              "pointer": "/tasks/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "B",
+                "duration": 1,
+                "predecessors": [
+                  "A"
+                ]
+              }
+            }
+          ],
+          "recordIds": [
+            "A",
+            "B"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-15",
+      "name": "Negative duration is an invalid input rather than an earlier finish",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "REVIEW_REQUIRED",
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "finding:NEGATIVE_TASK_DURATION",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:SCHEDULE_CONCLUSIONS_INVALID",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": true,
+        "valid": false,
+        "findings": [
+          {
+            "code": "INVALID_DURATION",
+            "severity": "high",
+            "title": "Task duration is invalid",
+            "detail": "A: nonnegative integer days required.",
+            "locations": [
+              {
+                "file": "holdout/blind-r1-15.json",
+                "pointer": "/tasks/0",
+                "declaredSource": null,
+                "raw": {
+                  "id": "A",
+                  "duration": -2,
+                  "predecessors": [],
+                  "costPerDay": 100,
+                  "fixedCost": 0
+                }
+              }
+            ],
+            "recordIds": [
+              "A"
+            ],
+            "blocking": false
+          }
+        ],
+        "tasks": []
+      },
+      "findings": [
+        {
+          "code": "INVALID_DURATION",
+          "severity": "high",
+          "title": "Task duration is invalid",
+          "detail": "A: nonnegative integer days required.",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-15.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "A",
+                "duration": -2,
+                "predecessors": [],
+                "costPerDay": 100,
+                "fixedCost": 0
+              }
+            }
+          ],
+          "recordIds": [
+            "A"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-16",
+      "name": "Fork join with a lag separates critical path, slip and delay exposure",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "GO",
+          "actual": "GO",
+          "pass": true
+        },
+        {
+          "metric": "schedule.finish",
+          "expected": "2026-03-10",
+          "actual": "2026-03-10",
+          "pass": true
+        },
+        {
+          "metric": "schedule.slipDays",
+          "expected": 2,
+          "actual": 2,
+          "pass": true
+        },
+        {
+          "metric": "schedule.eac",
+          "expected": 2230,
+          "actual": 2230,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingDirect",
+          "expected": 1550,
+          "actual": 1550,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingOverhead",
+          "expected": 180,
+          "actual": 180,
+          "pass": true
+        },
+        {
+          "metric": "schedule.delayExposure",
+          "expected": 100,
+          "actual": 100,
+          "pass": true
+        },
+        {
+          "metric": "schedule.budgetVariance",
+          "expected": 230,
+          "actual": 230,
+          "pass": true
+        },
+        {
+          "metric": "schedule.criticalTasks",
+          "expected": [
+            "A",
+            "C",
+            "D"
+          ],
+          "actual": [
+            "A",
+            "C",
+            "D"
+          ],
+          "pass": true
+        },
+        {
+          "metric": "schedule.totalFloat",
+          "expected": {
+            "A": 0,
+            "B": 3,
+            "C": 0,
+            "D": 0
+          },
+          "actual": {
+            "A": 0,
+            "B": 3,
+            "C": 0,
+            "D": 0
+          },
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "GO",
+      "plan": {
+        "available": true,
+        "valid": true,
+        "findings": [],
+        "tasks": [
+          {
+            "source": {
+              "file": "holdout/blind-r1-16.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "A",
+                "name": "Common preparation",
+                "duration": 2,
+                "remainingDays": 2,
+                "predecessors": [],
+                "costPerDay": 100,
+                "fixedCost": 10
+              }
+            },
+            "id": "A",
+            "name": "Common preparation",
+            "duration": 2,
+            "remainingDays": 2,
+            "predecessors": [],
+            "costPerDay": 100,
+            "fixedCost": 10,
+            "days": 2,
+            "links": [],
+            "es": 0,
+            "ef": 2,
+            "start": "2026-03-01",
+            "finish": "2026-03-03",
+            "lf": 2,
+            "ls": 0,
+            "float": 0,
+            "critical": true
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r1-16.json",
+              "pointer": "/tasks/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "B",
+                "name": "Short branch",
+                "duration": 3,
+                "remainingDays": 3,
+                "predecessors": [
+                  "A"
+                ],
+                "costPerDay": 200,
+                "fixedCost": 20
+              }
+            },
+            "id": "B",
+            "name": "Short branch",
+            "duration": 3,
+            "remainingDays": 3,
+            "predecessors": [
+              "A"
+            ],
+            "costPerDay": 200,
+            "fixedCost": 20,
+            "days": 3,
+            "links": [
+              {
+                "id": "A",
+                "lag": 0
+              }
+            ],
+            "es": 2,
+            "ef": 5,
+            "start": "2026-03-03",
+            "finish": "2026-03-06",
+            "lf": 8,
+            "ls": 5,
+            "float": 3,
+            "critical": false
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r1-16.json",
+              "pointer": "/tasks/2",
+              "declaredSource": null,
+              "raw": {
+                "id": "C",
+                "name": "Long branch",
+                "duration": 5,
+                "remainingDays": 5,
+                "predecessors": [
+                  "A"
+                ],
+                "costPerDay": 50,
+                "fixedCost": 30
+              }
+            },
+            "id": "C",
+            "name": "Long branch",
+            "duration": 5,
+            "remainingDays": 5,
+            "predecessors": [
+              "A"
+            ],
+            "costPerDay": 50,
+            "fixedCost": 30,
+            "days": 5,
+            "links": [
+              {
+                "id": "A",
+                "lag": 0
+              }
+            ],
+            "es": 2,
+            "ef": 7,
+            "start": "2026-03-03",
+            "finish": "2026-03-08",
+            "lf": 7,
+            "ls": 2,
+            "float": 0,
+            "critical": true
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r1-16.json",
+              "pointer": "/tasks/3",
+              "declaredSource": null,
+              "raw": {
+                "id": "D",
+                "name": "Joint release",
+                "duration": 1,
+                "remainingDays": 1,
+                "predecessors": [
+                  "B",
+                  "C:FS+1"
+                ],
+                "costPerDay": 400,
+                "fixedCost": 40
+              }
+            },
+            "id": "D",
+            "name": "Joint release",
+            "duration": 1,
+            "remainingDays": 1,
+            "predecessors": [
+              "B",
+              "C:FS+1"
+            ],
+            "costPerDay": 400,
+            "fixedCost": 40,
+            "days": 1,
+            "links": [
+              {
+                "id": "B",
+                "lag": 0
+              },
+              {
+                "id": "C",
+                "lag": 1
+              }
+            ],
+            "es": 8,
+            "ef": 9,
+            "start": "2026-03-09",
+            "finish": "2026-03-10",
+            "lf": 9,
+            "ls": 8,
+            "float": 0,
+            "critical": true
+          }
+        ],
+        "finish": "2026-03-10",
+        "slipDays": 2,
+        "remainingDays": 9,
+        "critical": [
+          "A",
+          "C",
+          "D"
+        ],
+        "direct": 1550,
+        "remainingDirect": 1550,
+        "overhead": 180,
+        "remainingOverhead": 180,
+        "spent": 500,
+        "eac": 2230,
+        "budget": 2000,
+        "variance": 230,
+        "budgetVariance": 230,
+        "criticalTasks": [
+          "A",
+          "C",
+          "D"
+        ],
+        "totalFloat": {
+          "A": 0,
+          "B": 3,
+          "C": 0,
+          "D": 0
+        },
+        "financialAssumptions": [],
+        "delayExposure": 100,
+        "overloads": [],
+        "calendar": "calendar",
+        "totalFloatMeaning": "Network float to the forecast finish; calendar slip is measured against SOP. Resource overload is reported, not leveled."
+      },
+      "findings": []
+    },
+    {
+      "id": "blind-r1-17",
+      "name": "PFMEA and Control Plan contain multiple independently visible omissions",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "REVIEW_REQUIRED",
+          "actual": "HOLD",
+          "pass": false
+        },
+        {
+          "metric": "finding:PROCESS_STEP_CONTROL_MISSING",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:UNCONTROLLED_SPECIAL_CHARACTERISTIC",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:REACTION_PLAN_MISSING",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:VISUAL_ONLY_DETECTION",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:HIGH_SEVERITY_WEAK_CONTROL",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "SPECIAL_CHARACTERISTIC_NOT_CONTROLLED",
+          "severity": "critical",
+          "title": "Special characteristic is not carried into the Control Plan",
+          "detail": "Seal appearance",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/pfmea/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "F1",
+                "operationId": "OP10",
+                "failureMode": "Brake pressure loss",
+                "severity": 10,
+                "specialCharacteristic": true,
+                "detectionControl": "Visual inspection only"
+              }
+            },
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/controlPlan/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "CP1",
+                "operationId": "OP10",
+                "characteristic": "Seal appearance",
+                "specialCharacteristic": false,
+                "method": "Visual inspection only",
+                "frequency": "First piece",
+                "reactionPlan": "",
+                "owner": "Inspector"
+              }
+            }
+          ],
+          "recordIds": [
+            "F1",
+            "CP1"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "MISSING_REACTION_PLAN",
+          "severity": "critical",
+          "title": "Reaction plan is missing",
+          "detail": "Seal appearance",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/pfmea/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "F1",
+                "operationId": "OP10",
+                "failureMode": "Brake pressure loss",
+                "severity": 10,
+                "specialCharacteristic": true,
+                "detectionControl": "Visual inspection only"
+              }
+            },
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/controlPlan/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "CP1",
+                "operationId": "OP10",
+                "characteristic": "Seal appearance",
+                "specialCharacteristic": false,
+                "method": "Visual inspection only",
+                "frequency": "First piece",
+                "reactionPlan": "",
+                "owner": "Inspector"
+              }
+            }
+          ],
+          "recordIds": [
+            "F1",
+            "CP1"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "WEAK_DETECTION_METHOD",
+          "severity": "warning",
+          "title": "Visual-only control requires engineering review",
+          "detail": "Visual inspection only",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/pfmea/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "F1",
+                "operationId": "OP10",
+                "failureMode": "Brake pressure loss",
+                "severity": 10,
+                "specialCharacteristic": true,
+                "detectionControl": "Visual inspection only"
+              }
+            },
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/controlPlan/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "CP1",
+                "operationId": "OP10",
+                "characteristic": "Seal appearance",
+                "specialCharacteristic": false,
+                "method": "Visual inspection only",
+                "frequency": "First piece",
+                "reactionPlan": "",
+                "owner": "Inspector"
+              }
+            }
+          ],
+          "recordIds": [
+            "F1",
+            "CP1"
+          ],
+          "blocking": false
+        },
+        {
+          "code": "HIGH_SEVERITY_WEAK_CONTROL",
+          "severity": "warning",
+          "title": "High-severity mode has weak or absent detection",
+          "detail": "Brake pressure loss",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/pfmea/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "F1",
+                "operationId": "OP10",
+                "failureMode": "Brake pressure loss",
+                "severity": 10,
+                "specialCharacteristic": true,
+                "detectionControl": "Visual inspection only"
+              }
+            },
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/controlPlan/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "CP1",
+                "operationId": "OP10",
+                "characteristic": "Seal appearance",
+                "specialCharacteristic": false,
+                "method": "Visual inspection only",
+                "frequency": "First piece",
+                "reactionPlan": "",
+                "owner": "Inspector"
+              }
+            }
+          ],
+          "recordIds": [
+            "F1",
+            "CP1"
+          ],
+          "blocking": false
+        },
+        {
+          "code": "UNMATCHED_PROCESS_STEP",
+          "severity": "warning",
+          "title": "PFMEA operation has no Control Plan row",
+          "detail": "OP20",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/pfmea/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "F2",
+                "operationId": "OP20",
+                "failureMode": "Fastener omitted",
+                "severity": 7,
+                "specialCharacteristic": true,
+                "detectionControl": ""
+              }
+            }
+          ],
+          "recordIds": [
+            "F2"
+          ],
+          "blocking": false
+        },
+        {
+          "code": "CONTROL_WITHOUT_PFMEA",
+          "severity": "warning",
+          "title": "Control Plan operation has no PFMEA counterpart",
+          "detail": "OP99",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-17.json",
+              "pointer": "/controlPlan/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "CP2",
+                "operationId": "OP99",
+                "characteristic": "Torque",
+                "specialCharacteristic": true,
+                "method": "Electronic torque trace",
+                "frequency": "Every assembly",
+                "reactionPlan": "Stop and segregate",
+                "owner": "Process Owner"
+              }
+            }
+          ],
+          "recordIds": [
+            "CP2"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r1-18",
+      "name": "Missing task predecessor must not be treated as project start",
+      "pass": false,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "REVIEW_REQUIRED",
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "finding:TASK_PREDECESSOR_MISSING",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        },
+        {
+          "metric": "finding:SCHEDULE_CONCLUSIONS_INVALID",
+          "expected": true,
+          "actual": false,
+          "pass": false
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": true,
+        "valid": false,
+        "findings": [
+          {
+            "code": "MISSING_PREDECESSOR",
+            "severity": "high",
+            "title": "Invalid or missing predecessor",
+            "detail": "A ← UNIMPORTED-PREDECESSOR",
+            "locations": [
+              {
+                "file": "holdout/blind-r1-18.json",
+                "pointer": "/tasks/0",
+                "declaredSource": null,
+                "raw": {
+                  "id": "A",
+                  "duration": 2,
+                  "predecessors": [
+                    "UNIMPORTED-PREDECESSOR"
+                  ],
+                  "costPerDay": 100,
+                  "fixedCost": 0
+                }
+              }
+            ],
+            "recordIds": [
+              "A"
+            ],
+            "blocking": false
+          }
+        ],
+        "tasks": []
+      },
+      "findings": [
+        {
+          "code": "MISSING_PREDECESSOR",
+          "severity": "high",
+          "title": "Invalid or missing predecessor",
+          "detail": "A ← UNIMPORTED-PREDECESSOR",
+          "locations": [
+            {
+              "file": "holdout/blind-r1-18.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "A",
+                "duration": 2,
+                "predecessors": [
+                  "UNIMPORTED-PREDECESSOR"
+                ],
+                "costPerDay": 100,
+                "fixedCost": 0
+              }
+            }
+          ],
+          "recordIds": [
+            "A"
+          ],
+          "blocking": false
+        }
+      ]
+    }
+  ],
+  "interpretation": "Independent AI-authored scenarios. Not industry certification, real-user validation or human expert approval."
+}

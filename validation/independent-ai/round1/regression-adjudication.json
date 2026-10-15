@@ -1,0 +1,30 @@
+{
+  "kind":"independent-ai-post-fix-regression-adjudication",
+  "createdAt":"2026-10-15T07:25:18Z",
+  "humanExpertValidation":false,
+  "newBlindEvaluation":false,
+  "engineSha256":"4a761aa038d992de797a5de6d2fe0cfea0be9fe794b35359a20acd7e5e29e58f",
+  "suiteSha256":"4bf3510bb56ff3545859200ae1d31117269ebbf365cce85c2dd11b7ccd24c132",
+  "fixturesAndOriginalExpectedSchemaUnchanged":true,
+  "implementationInspected":false,
+  "rawRegressionScore":{"passed":2,"failed":16,"total":18},
+  "retainedInitialScore":{"passed":1,"failed":17,"total":18,"path":"initial-results.json"},
+  "semanticRegressionScore":{"accepted":18,"provenBehavioralFailures":0,"total":18},
+  "rawPassCases":["blind-r1-01","blind-r1-16"],
+  "remainingRawFailures":"All sixteen remaining raw failures are the frozen generic diagnostic-label comparisons and two allowed conservative aggregate-status differences. None establishes a behavioral defect. Original expectations were not edited to improve the raw score.",
+  "statusDifferences":[
+    {"case":"blind-r1-03","expected":"HOLD","observed":"REVIEW_REQUIRED","reason":"Missing requirements manifest is explicitly flagged as unknown release completeness and does not receive GO."},
+    {"case":"blind-r1-17","expected":"REVIEW_REQUIRED","observed":"HOLD","reason":"The frozen manifest permits stricter HOLD for actionable process-control inconsistencies. All requested inconsistency families are reported."}
+  ],
+  "diagnosticEquivalenceReference":"initial-semantic-review.json records the independent mapping of generic frozen labels to emitted diagnostics; the same mappings apply to this run.",
+  "newlyObservableVerification":{
+    "calendarCostAndCPMChecks":"All 15 exact schedule expectations across cases01,02,16 pass, including the five extra fields that were unverified in the initial result artifact.",
+    "forkJoin":"Finish March10; slip2; EAC2230; remainingDirect1550; remainingOverhead180; delayExposure100; budgetVariance230; criticalTasks A,C,D; totalFloat A0,B3,C0,D0.",
+    "invalidSchedules":"Cases14,15,18 have available=true, valid=false, cited failure findings, empty scheduled tasks and no finish/EAC conclusions.",
+    "processControlCitations":"All six findings in case17 cite nonempty source locations. Paired OP10 findings cite both PFMEA and Control Plan rows; unmatched OP20 cites its PFMEA row; orphan OP99 cites its Control Plan row.",
+    "validConcession":"Case02 retains CONDITIONAL and exact finish/slip/EAC, so the repaired expiry check does not reject the suite's legitimate noncritical concession."
+  },
+  "remainingLimits":"Generic REVIEW_NOT_ACCEPTED findings remain broad and some involved sources are not individually included. Absent-manifest finding has no source location because the manifest is absent. This adjudication is semantic assessment of a small disclosed regression suite, not complete provenance or industrial validation.",
+  "preservation":"Initial raw 1/18, its initial semantic adjudication and all frozen fixtures remain unchanged. The regression raw 2/18 is separately retained and must not be represented as a new blind result.",
+  "validationType":"Independent AI-authored contract regression; not human expert, industrial certification, real-user validation, or production readiness."
+}

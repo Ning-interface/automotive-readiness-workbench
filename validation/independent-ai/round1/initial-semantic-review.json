@@ -1,0 +1,49 @@
+{
+  "kind": "independent-ai-semantic-adjudication",
+  "humanExpertValidation": false,
+  "reviewedArtifact": "initial-results.json",
+  "engineSha256": "320431e8d6a69b30b4581c36ac2421f600341f979975b35e56b5c869b2ce3920",
+  "suiteSha256": "4bf3510bb56ff3545859200ae1d31117269ebbf365cce85c2dd11b7ccd24c132",
+  "implementationInspected": false,
+  "fixturesChanged": false,
+  "rawHarnessScore": {"passed":1,"failed":17,"total":18},
+  "observations": {
+    "runtimeExceptions": 0,
+    "literalStatusMatches": 16,
+    "semanticallyAcceptedDispositions": 18,
+    "releaseDecisionBehaviorFailuresDemonstrated": 0,
+    "exactCoreCalendarChecksPassed": 9,
+    "exactCoreCalendarChecksTotal": 9,
+    "additionalDelayExposureCheck": "100 expected, 100 observed",
+    "unverifiedExtraScheduleFields": ["remainingDirect","remainingOverhead","budgetVariance","criticalTasks","totalFloat"]
+  },
+  "statusAdjudications": [
+    {"case":"blind-r1-03","expected":"HOLD","observed":"REVIEW_REQUIRED","decision":"Semantically acceptable non-release state. The contract forbids GO when manifest completeness is unknown, and UNDEFINED_REQUIREMENTS explicitly explains that condition."},
+    {"case":"blind-r1-17","expected":"REVIEW_REQUIRED","observed":"HOLD","decision":"Semantically acceptable stricter aggregate state, expressly permitted by the frozen manifest's reviewRequired interpretation. All five requested process-control inconsistency families are reported."}
+  ],
+  "diagnosticAdjudications": [
+    {"case":"blind-r1-02","mapping":{"ACTIVE_NONCRITICAL_CONCESSION":"SCOPED_CONCESSION"}},
+    {"case":"blind-r1-03","mapping":{"REQUIREMENTS_MANIFEST_MISSING":"UNDEFINED_REQUIREMENTS"}},
+    {"case":"blind-r1-04","mapping":{"EVIDENCE_APPROVAL_MISSING":"REVIEW_NOT_ACCEPTED"}},
+    {"case":"blind-r1-05","mapping":{"UNKNOWN_EVIDENCE_STATUS":"REVIEW_NOT_ACCEPTED"}},
+    {"case":"blind-r1-06","mapping":{"FUTURE_REVIEW_DATE":"REVIEW_NOT_ACCEPTED"}},
+    {"case":"blind-r1-07","mapping":{"CRITICAL_EVIDENCE_REJECTED":"REJECTED_EVIDENCE"},"note":"HOLD despite a valid-looking waiver demonstrates the required nonwaivable behavior; an additional label for the same hard stop is not required."},
+    {"case":"blind-r1-08","mapping":{"WAIVER_EXPIRED":"REVIEW_NOT_ACCEPTED","MANDATORY_EVIDENCE_UNRESOLVED":"REVIEW_NOT_ACCEPTED"}},
+    {"case":"blind-r1-09","mapping":{"WAIVER_SCOPE_MISMATCH":"REVIEW_NOT_ACCEPTED","MANDATORY_EVIDENCE_UNRESOLVED":"REVIEW_NOT_ACCEPTED"}},
+    {"case":"blind-r1-10","mapping":{"UNAPPROVED_CHANGE_INVALIDATES_EVIDENCE":"UNAPPROVED_CHANGE"}},
+    {"case":"blind-r1-11","mapping":{"NUMERIC_BOUND_FAILURE_OVERRIDES_VERIFIED":"OUT_OF_SPEC"}},
+    {"case":"blind-r1-12","mapping":{"EVIDENCE_DEPENDENCY_CYCLE":"DEPENDENCY_CYCLE"}},
+    {"case":"blind-r1-13","mapping":{"EVIDENCE_DEPENDENCY_MISSING":"DEPENDENCY_NOT_VERIFIED"}},
+    {"case":"blind-r1-14","mapping":{"SCHEDULE_CYCLE":"SCHEDULE_CYCLE"},"note":"REVIEW_REQUIRED plus the cycle finding satisfies the visible review decision; the output does not expose raw schedule conclusions for independent inspection."},
+    {"case":"blind-r1-15","mapping":{"NEGATIVE_TASK_DURATION":"INVALID_DURATION"},"note":"REVIEW_REQUIRED plus invalid-duration finding satisfies the visible review decision; the output does not expose raw schedule conclusions for independent inspection."},
+    {"case":"blind-r1-17","mapping":{"PROCESS_STEP_CONTROL_MISSING":"UNMATCHED_PROCESS_STEP","UNCONTROLLED_SPECIAL_CHARACTERISTIC":"SPECIAL_CHARACTERISTIC_NOT_CONTROLLED","REACTION_PLAN_MISSING":"MISSING_REACTION_PLAN","VISUAL_ONLY_DETECTION":"WEAK_DETECTION_METHOD","HIGH_SEVERITY_WEAK_CONTROL":"HIGH_SEVERITY_WEAK_CONTROL"}},
+    {"case":"blind-r1-18","mapping":{"TASK_PREDECESSOR_MISSING":"MISSING_PREDECESSOR"},"note":"REVIEW_REQUIRED plus missing-predecessor finding satisfies the visible review decision; the output does not expose raw schedule conclusions for independent inspection."}
+  ],
+  "remainingEvidenceLimits": [
+    "blind-r1-16 has five failed schedule-key checks with no actual value emitted. The result artifact cannot distinguish an engine omission from a result-field naming mismatch; these metrics remain unverified rather than adjudicated wrong.",
+    "The result artifact includes finding codes and titles only. Source-row citations, detailed invalid-waiver reasons and invalid-schedule output suppression cannot be checked from it.",
+    "Generic REVIEW_NOT_ACCEPTED labels demonstrate conservative disposition in isolated cases but do not themselves expose each exact rejection reason. Diagnostic specificity remains an inspection limit.",
+    "The suite is small and independently AI-authored. Accepted observed behavior is not a production-readiness, industrial-expert or human-validation claim."
+  ],
+  "conclusion": "The raw 1/18 score primarily reflects literal diagnostic-name comparison against intentionally generic independent labels. Every observed aggregate release disposition is semantically acceptable under the frozen oracle, and all reported core date/cost arithmetic matches. No actual behavioral failure is established by this result artifact; five extra CPM/cost fields and source-detail behavior need richer output before the suite can be called fully verified."
+}
