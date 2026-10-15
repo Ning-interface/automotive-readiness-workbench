@@ -1,0 +1,61 @@
+{
+  "project": {
+    "id": "FW-01",
+    "name": "Independent synthetic test",
+    "asOf": "2026-10-15",
+    "startDate": "2026-10-15",
+    "sop": "2026-10-20",
+    "gate": "SOP",
+    "revision": "R1",
+    "scope": "test-only",
+    "currency": "CNY",
+    "budget": 10000,
+    "spent": 1000,
+    "overheadPerDay": 100,
+    "delayCostPerDay": 500,
+    "calendar": "calendar"
+  },
+  "requirements": [
+    {
+      "id": "EV-01",
+      "name": "Pressure validation",
+      "from": "A",
+      "critical": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-01",
+      "name": "Pressure validation",
+      "status": "verified",
+      "revision": "R1",
+      "reviewer": "Synthetic QA declaration",
+      "reviewedAt": "2026-10-14",
+      "owner": "QA",
+      "acceptance": "Pressure >= 10 bar",
+      "result": "12 bar",
+      "value": 12,
+      "min": 10,
+      "unit": "bar"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T1",
+      "name": "Prepare",
+      "duration": 2,
+      "costPerDay": 200,
+      "fixedCost": 50
+    },
+    {
+      "id": "T2",
+      "name": "Validate",
+      "duration": 1,
+      "predecessors": [
+        "T1"
+      ],
+      "costPerDay": 300,
+      "fixedCost": 0
+    }
+  ]
+}

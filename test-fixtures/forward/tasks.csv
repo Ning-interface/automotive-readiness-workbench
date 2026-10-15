@@ -1,0 +1,3 @@
+id,name,duration,costPerDay,fixedCost,predecessors
+T1,Prepare,2,200,50,
+T2,Validate,1,300,0,T1

@@ -1,0 +1,2 @@
+id,name,asOf,startDate,sop,gate,revision,scope,currency,budget,spent,overheadPerDay,delayCostPerDay,calendar
+FW-01,Independent synthetic test,2026-10-15,2026-10-15,2026-10-20,SOP,R1,test-only,CNY,10000,1000,100,500,calendar

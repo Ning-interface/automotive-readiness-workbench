@@ -1,0 +1,2 @@
+id,name,status,revision,reviewer,reviewedAt,owner,acceptance,result,value,min,unit
+EV-01,Pressure validation,verified,R1,Synthetic QA declaration,2026-10-14,QA,Pressure >= 10 bar,12 bar,12,10,bar
