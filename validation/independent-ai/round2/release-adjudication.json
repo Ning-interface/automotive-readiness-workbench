@@ -1,0 +1,17 @@
+{
+  "kind":"independent-ai-final-candidate-regression-adjudication",
+  "createdAt":"2026-10-15T07:29:52Z",
+  "humanExpertValidation":false,
+  "newBlindEvaluation":false,
+  "engineSha256":"71ccdcd4def824dedced06df614080c6eabbbf9020dbe2a6bc8eba5356f4479d",
+  "suiteSha256":"393e38c65aeb1ef3dfac7c9318c2ccb63f81161153b7fb77152d6d24e936c2e2",
+  "fixturesAndExpectedValuesUnchanged":true,
+  "implementationInspected":false,
+  "rawScore":{"passed":16,"failed":0,"total":16},
+  "semanticAdjudication":{"accepted":16,"provenBehavioralFailures":0,"total":16},
+  "comparisonToPriorRegression":{"changedCaseResults":0,"allChecksPlansFindingsAndLocationsIdentical":true,"priorArtifact":"regression-results.json"},
+  "assessment":"The repaired selected-SOP waiver-expiry counterexample remains HOLD. The other fifteen cases retain identical behavior, including all four legitimate GO controls, all twenty-one date/financial checks and invalid schedule forecast suppression. No regression is demonstrated by these frozen cases.",
+  "preservedHistory":{"initialRaw":"15/16 in initial-results.json with proven SOP-expiry defect","priorRegressionRaw":"16/16 in regression-results.json after repair","allPriorArtifactsUnchanged":true},
+  "scopeLimit":"The frozen suite does not contain normalized-bundle reimports or malformed documents collections, so this run establishes no independent coverage of the newly reported hardening behavior. It checks regression of the original frozen cases only.",
+  "validationType":"Independent AI-authored disclosed regression, not a new blind pass, human expert validation, industrial certification, real-user validation or production-readiness claim."
+}

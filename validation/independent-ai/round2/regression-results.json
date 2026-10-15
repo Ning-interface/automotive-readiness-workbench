@@ -1,0 +1,1546 @@
+{
+  "kind": "independent-ai-fixture-evaluation",
+  "humanExpertValidation": false,
+  "generatedAt": "2026-10-15T07:24:51.482Z",
+  "engineSha256": "4a761aa038d992de797a5de6d2fe0cfea0be9fe794b35359a20acd7e5e29e58f",
+  "suiteSha256": "393e38c65aeb1ef3dfac7c9318c2ccb63f81161153b7fb77152d6d24e936c2e2",
+  "suitePath": "cases.json",
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "results": [
+    {
+      "id": "blind-r2-01",
+      "name": "Inclusive numeric boundary and a future-gate requirement are legitimate",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "GO",
+          "actual": "GO",
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "GO",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": []
+    },
+    {
+      "id": "blind-r2-02",
+      "name": "Conflicting duplicate evidence identities cannot select the favorable copy",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "acceptableStatus",
+          "expected": [
+            "HOLD",
+            "REVIEW_REQUIRED"
+          ],
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "DUPLICATE_EVIDENCE",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "More than one record has this identity.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-02.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-03-31",
+                "owner": "Owner A",
+                "acceptance": "Flow passes",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-02.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "DUPLICATE_ID",
+          "severity": "high",
+          "title": "Ambiguous duplicate identity",
+          "detail": "evidence: FLOW",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-02.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-03-31",
+                "owner": "Owner A",
+                "acceptance": "Flow passes",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-02.json",
+              "pointer": "/evidence/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "rejected",
+                "revision": "R2",
+                "reviewer": "Reviewer B",
+                "reviewedAt": "2026-03-31",
+                "owner": "Owner B",
+                "acceptance": "Flow passes",
+                "result": "Fail",
+                "dependencies": []
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-03",
+      "name": "Duplicate requirements are an import error despite identical metadata",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "acceptableStatus",
+          "expected": [
+            "HOLD",
+            "REVIEW_REQUIRED"
+          ],
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "DUPLICATE_ID",
+          "severity": "high",
+          "title": "Ambiguous duplicate identity",
+          "detail": "requirements: FLOW",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-03.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            },
+            {
+              "file": "holdout/blind-r2-03.json",
+              "pointer": "/requirements/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-04",
+      "name": "Unknown first-applicable gate must not postpone a requirement indefinitely",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "acceptableStatus",
+          "expected": [
+            "HOLD",
+            "REVIEW_REQUIRED"
+          ],
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "INVALID_REQUIREMENT",
+          "severity": "high",
+          "title": "Invalid release requirement",
+          "detail": "ID, recognized first gate and explicit critical boolean are required.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-04.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "Z9",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW"
+          ],
+          "blocking": false
+        },
+        {
+          "code": "NO_APPLICABLE_REQUIREMENTS",
+          "severity": "high",
+          "title": "No agreed criterion applies to this gate",
+          "detail": "The supplied manifest cannot establish readiness at this gate.",
+          "locations": [],
+          "recordIds": [],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-05",
+      "name": "Numeric-invalid evidence cannot be rescued by a complete waiver",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "INVALID_ACCEPTANCE_DATA",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "Numeric result or acceptance bounds are invalid.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-05.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-03-31",
+                "owner": "Owner A",
+                "acceptance": "Flow within numeric bounds",
+                "result": "Pass",
+                "dependencies": [],
+                "value": "not measured",
+                "min": 9,
+                "max": 11,
+                "unit": "l/min"
+              }
+            },
+            {
+              "file": "holdout/blind-r2-05.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "INVALID_NUMBER",
+          "severity": "high",
+          "title": "Invalid numeric value",
+          "detail": "evidence.value: NaN",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-05.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-03-31",
+                "owner": "Owner A",
+                "acceptance": "Flow within numeric bounds",
+                "result": "Pass",
+                "dependencies": [],
+                "value": "not measured",
+                "min": 9,
+                "max": 11,
+                "unit": "l/min"
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-06",
+      "name": "Calendar-impossible review date cannot normalize into a real approval",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-06.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-02-30",
+                "owner": "Owner A",
+                "acceptance": "Flow passes",
+                "result": "Pass",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-06.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "INVALID_DATE",
+          "severity": "high",
+          "title": "Date must be an unambiguous ISO date",
+          "detail": "evidence.reviewedAt: 2026-02-30",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-06.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-02-30",
+                "owner": "Owner A",
+                "acceptance": "Flow passes",
+                "result": "Pass",
+                "dependencies": []
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-07",
+      "name": "SOP concession expires after assessment but before the selected gate date",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-07.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "open",
+                "revision": "R2",
+                "owner": "Owner A",
+                "acceptance": "Validation completed",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-07.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-08",
+      "name": "Future concession signature is not current approval",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-08.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "open",
+                "revision": "R2",
+                "owner": "Owner A",
+                "acceptance": "Validation completed",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-08.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-09",
+      "name": "A waiver approved for adjacent gates cannot authorize the current gate",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-09.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "open",
+                "revision": "R2",
+                "owner": "Owner A",
+                "acceptance": "Validation completed",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-09.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-10",
+      "name": "A parent concession cannot approve a rejected dependency",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "HOLD",
+          "actual": "HOLD",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "DEPENDENCY_NOT_VERIFIED",
+          "severity": "critical",
+          "title": "SYSTEM",
+          "detail": "An upstream evidence item is missing, cyclic or unverified.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-10.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "SYSTEM",
+                "status": "verified",
+                "revision": "R2",
+                "reviewer": "Reviewer A",
+                "reviewedAt": "2026-03-31",
+                "owner": "Owner A",
+                "acceptance": "Component evidence accepted first",
+                "result": "Pass",
+                "dependencies": [
+                  "COMPONENT"
+                ]
+              }
+            },
+            {
+              "file": "holdout/blind-r2-10.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "SYSTEM",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "SYSTEM",
+            "SYSTEM"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-11",
+      "name": "Omitted project scope cannot be invented from concession scope",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "acceptableStatus",
+          "expected": [
+            "HOLD",
+            "REVIEW_REQUIRED"
+          ],
+          "actual": "HOLD",
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "HOLD",
+      "plan": {
+        "available": false,
+        "valid": false,
+        "findings": [],
+        "tasks": [],
+        "reason": "No task network imported."
+      },
+      "findings": [
+        {
+          "code": "REVIEW_NOT_ACCEPTED",
+          "severity": "critical",
+          "title": "FLOW",
+          "detail": "Evidence needs a declared reviewer, verified status and a non-future ISO review date.",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-11.json",
+              "pointer": "/evidence/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "status": "open",
+                "revision": "R2",
+                "owner": "Owner A",
+                "acceptance": "Validation completed",
+                "result": "Pending",
+                "dependencies": []
+              }
+            },
+            {
+              "file": "holdout/blind-r2-11.json",
+              "pointer": "/requirements/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FLOW",
+                "from": "A",
+                "critical": false
+              }
+            }
+          ],
+          "recordIds": [
+            "FLOW",
+            "FLOW"
+          ],
+          "blocking": true
+        },
+        {
+          "code": "MISSING_PROJECT_FIELD",
+          "severity": "high",
+          "title": "Project metadata incomplete",
+          "detail": "scope",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-11.json",
+              "pointer": "/project"
+            }
+          ],
+          "recordIds": [
+            "R2-11"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-12",
+      "name": "Future actual completion cannot mark work as complete today",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "acceptableStatus",
+          "expected": [
+            "HOLD",
+            "REVIEW_REQUIRED"
+          ],
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": true,
+        "valid": false,
+        "findings": [
+          {
+            "code": "INVALID_ACTUAL_FINISH",
+            "severity": "high",
+            "title": "Actual completion cannot be future or malformed",
+            "detail": "FUTURE-DONE",
+            "locations": [
+              {
+                "file": "holdout/blind-r2-12.json",
+                "pointer": "/tasks/0",
+                "declaredSource": null,
+                "raw": {
+                  "id": "FUTURE-DONE",
+                  "duration": 4,
+                  "remainingDays": 0,
+                  "predecessors": [],
+                  "costPerDay": 100,
+                  "fixedCost": 0,
+                  "actualFinish": "2026-04-02"
+                }
+              }
+            ],
+            "recordIds": [
+              "FUTURE-DONE"
+            ],
+            "blocking": false
+          }
+        ],
+        "tasks": []
+      },
+      "findings": [
+        {
+          "code": "INVALID_ACTUAL_FINISH",
+          "severity": "high",
+          "title": "Actual completion cannot be future or malformed",
+          "detail": "FUTURE-DONE",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-12.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "FUTURE-DONE",
+                "duration": 4,
+                "remainingDays": 0,
+                "predecessors": [],
+                "costPerDay": 100,
+                "fixedCost": 0,
+                "actualFinish": "2026-04-02"
+              }
+            }
+          ],
+          "recordIds": [
+            "FUTURE-DONE"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-13",
+      "name": "Finish-to-start lead is outside the supported nonnegative-lag model",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "acceptableStatus",
+          "expected": [
+            "HOLD",
+            "REVIEW_REQUIRED"
+          ],
+          "actual": "REVIEW_REQUIRED",
+          "pass": true
+        },
+        {
+          "metric": "hasCitations",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "REVIEW_REQUIRED",
+      "plan": {
+        "available": true,
+        "valid": false,
+        "findings": [
+          {
+            "code": "MISSING_PREDECESSOR",
+            "severity": "high",
+            "title": "Invalid or missing predecessor",
+            "detail": "B ← A:FS-1",
+            "locations": [
+              {
+                "file": "holdout/blind-r2-13.json",
+                "pointer": "/tasks/1",
+                "declaredSource": null,
+                "raw": {
+                  "id": "B",
+                  "duration": 2,
+                  "predecessors": [
+                    "A:FS-1"
+                  ]
+                }
+              }
+            ],
+            "recordIds": [
+              "B"
+            ],
+            "blocking": false
+          }
+        ],
+        "tasks": []
+      },
+      "findings": [
+        {
+          "code": "MISSING_PREDECESSOR",
+          "severity": "high",
+          "title": "Invalid or missing predecessor",
+          "detail": "B ← A:FS-1",
+          "locations": [
+            {
+              "file": "holdout/blind-r2-13.json",
+              "pointer": "/tasks/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "B",
+                "duration": 2,
+                "predecessors": [
+                  "A:FS-1"
+                ]
+              }
+            }
+          ],
+          "recordIds": [
+            "B"
+          ],
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "blind-r2-14",
+      "name": "Actual completed work and reduced remaining duration are costed correctly",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "GO",
+          "actual": "GO",
+          "pass": true
+        },
+        {
+          "metric": "schedule.finish",
+          "expected": "2026-04-06",
+          "actual": "2026-04-06",
+          "pass": true
+        },
+        {
+          "metric": "schedule.slipDays",
+          "expected": 1,
+          "actual": 1,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingDirect",
+          "expected": 130,
+          "actual": 130,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingOverhead",
+          "expected": 20,
+          "actual": 20,
+          "pass": true
+        },
+        {
+          "metric": "schedule.eac",
+          "expected": 550,
+          "actual": 550,
+          "pass": true
+        },
+        {
+          "metric": "schedule.budgetVariance",
+          "expected": 50,
+          "actual": 50,
+          "pass": true
+        },
+        {
+          "metric": "schedule.delayExposure",
+          "expected": 25,
+          "actual": 25,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "GO",
+      "plan": {
+        "available": true,
+        "valid": true,
+        "findings": [],
+        "tasks": [
+          {
+            "source": {
+              "file": "holdout/blind-r2-14.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "DONE",
+                "duration": 10,
+                "remainingDays": 0,
+                "predecessors": [],
+                "costPerDay": 999,
+                "fixedCost": 999,
+                "actualFinish": "2026-04-01"
+              }
+            },
+            "id": "DONE",
+            "duration": 10,
+            "remainingDays": 0,
+            "predecessors": [],
+            "costPerDay": 999,
+            "fixedCost": 999,
+            "actualFinish": "2026-04-01",
+            "days": 0,
+            "links": [],
+            "ef": 31,
+            "es": 21,
+            "start": "2026-03-22",
+            "finish": "2026-04-01",
+            "lf": 33,
+            "ls": 23,
+            "float": 2,
+            "critical": false
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r2-14.json",
+              "pointer": "/tasks/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "REMAIN",
+                "duration": 20,
+                "remainingDays": 2,
+                "predecessors": [
+                  "DONE:FS+1"
+                ],
+                "costPerDay": 50,
+                "fixedCost": 30
+              }
+            },
+            "id": "REMAIN",
+            "duration": 20,
+            "remainingDays": 2,
+            "predecessors": [
+              "DONE:FS+1"
+            ],
+            "costPerDay": 50,
+            "fixedCost": 30,
+            "days": 2,
+            "links": [
+              {
+                "id": "DONE",
+                "lag": 1
+              }
+            ],
+            "es": 34,
+            "ef": 36,
+            "start": "2026-04-04",
+            "finish": "2026-04-06",
+            "lf": 36,
+            "ls": 34,
+            "float": 0,
+            "critical": true
+          }
+        ],
+        "finish": "2026-04-06",
+        "slipDays": 1,
+        "remainingDays": 2,
+        "critical": [
+          "REMAIN"
+        ],
+        "direct": 130,
+        "remainingDirect": 130,
+        "overhead": 20,
+        "remainingOverhead": 20,
+        "spent": 400,
+        "eac": 550,
+        "budget": 500,
+        "variance": 50,
+        "budgetVariance": 50,
+        "criticalTasks": [
+          "REMAIN"
+        ],
+        "totalFloat": {
+          "DONE": 2,
+          "REMAIN": 0
+        },
+        "financialAssumptions": [],
+        "delayExposure": 25,
+        "overloads": [],
+        "calendar": "calendar",
+        "totalFloatMeaning": "Network float to the forecast finish; calendar slip is measured against SOP. Resource overload is reported, not leveled."
+      },
+      "findings": []
+    },
+    {
+      "id": "blind-r2-15",
+      "name": "Absolute not-before constraint and zero-duration milestone retain exact costs",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "GO",
+          "actual": "GO",
+          "pass": true
+        },
+        {
+          "metric": "schedule.finish",
+          "expected": "2026-04-06",
+          "actual": "2026-04-06",
+          "pass": true
+        },
+        {
+          "metric": "schedule.slipDays",
+          "expected": 0,
+          "actual": 0,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingDirect",
+          "expected": 155,
+          "actual": 155,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingOverhead",
+          "expected": 50,
+          "actual": 50,
+          "pass": true
+        },
+        {
+          "metric": "schedule.eac",
+          "expected": 305,
+          "actual": 305,
+          "pass": true
+        },
+        {
+          "metric": "schedule.budgetVariance",
+          "expected": 5,
+          "actual": 5,
+          "pass": true
+        },
+        {
+          "metric": "schedule.delayExposure",
+          "expected": 0,
+          "actual": 0,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "GO",
+      "plan": {
+        "available": true,
+        "valid": true,
+        "findings": [],
+        "tasks": [
+          {
+            "source": {
+              "file": "holdout/blind-r2-15.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "A",
+                "duration": 1,
+                "remainingDays": 1,
+                "predecessors": [],
+                "costPerDay": 20,
+                "fixedCost": 0
+              }
+            },
+            "id": "A",
+            "duration": 1,
+            "remainingDays": 1,
+            "predecessors": [],
+            "costPerDay": 20,
+            "fixedCost": 0,
+            "days": 1,
+            "links": [],
+            "es": 2,
+            "ef": 3,
+            "start": "2026-04-01",
+            "finish": "2026-04-02",
+            "lf": 5,
+            "ls": 4,
+            "float": 2,
+            "critical": false
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r2-15.json",
+              "pointer": "/tasks/1",
+              "declaredSource": null,
+              "raw": {
+                "id": "B",
+                "duration": 2,
+                "remainingDays": 2,
+                "predecessors": [
+                  "A"
+                ],
+                "costPerDay": 30,
+                "fixedCost": 10
+              }
+            },
+            "id": "B",
+            "duration": 2,
+            "remainingDays": 2,
+            "predecessors": [
+              "A"
+            ],
+            "costPerDay": 30,
+            "fixedCost": 10,
+            "days": 2,
+            "links": [
+              {
+                "id": "A",
+                "lag": 0
+              }
+            ],
+            "es": 3,
+            "ef": 5,
+            "start": "2026-04-02",
+            "finish": "2026-04-04",
+            "lf": 7,
+            "ls": 5,
+            "float": 2,
+            "critical": false
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r2-15.json",
+              "pointer": "/tasks/2",
+              "declaredSource": null,
+              "raw": {
+                "id": "C",
+                "duration": 1,
+                "remainingDays": 1,
+                "predecessors": [
+                  "A"
+                ],
+                "notBefore": "2026-04-05",
+                "costPerDay": 40,
+                "fixedCost": 20
+              }
+            },
+            "id": "C",
+            "duration": 1,
+            "remainingDays": 1,
+            "predecessors": [
+              "A"
+            ],
+            "notBefore": "2026-04-05",
+            "costPerDay": 40,
+            "fixedCost": 20,
+            "days": 1,
+            "links": [
+              {
+                "id": "A",
+                "lag": 0
+              }
+            ],
+            "es": 6,
+            "ef": 7,
+            "start": "2026-04-05",
+            "finish": "2026-04-06",
+            "lf": 7,
+            "ls": 6,
+            "float": 0,
+            "critical": true
+          },
+          {
+            "source": {
+              "file": "holdout/blind-r2-15.json",
+              "pointer": "/tasks/3",
+              "declaredSource": null,
+              "raw": {
+                "id": "M",
+                "duration": 0,
+                "remainingDays": 0,
+                "predecessors": [
+                  "B",
+                  "C"
+                ],
+                "costPerDay": 999,
+                "fixedCost": 5
+              }
+            },
+            "id": "M",
+            "duration": 0,
+            "remainingDays": 0,
+            "predecessors": [
+              "B",
+              "C"
+            ],
+            "costPerDay": 999,
+            "fixedCost": 5,
+            "days": 0,
+            "links": [
+              {
+                "id": "B",
+                "lag": 0
+              },
+              {
+                "id": "C",
+                "lag": 0
+              }
+            ],
+            "es": 7,
+            "ef": 7,
+            "start": "2026-04-06",
+            "finish": "2026-04-06",
+            "lf": 7,
+            "ls": 7,
+            "float": 0,
+            "critical": true
+          }
+        ],
+        "finish": "2026-04-06",
+        "slipDays": 0,
+        "remainingDays": 5,
+        "critical": [
+          "C",
+          "M"
+        ],
+        "direct": 155,
+        "remainingDirect": 155,
+        "overhead": 50,
+        "remainingOverhead": 50,
+        "spent": 100,
+        "eac": 305,
+        "budget": 300,
+        "variance": 5,
+        "budgetVariance": 5,
+        "criticalTasks": [
+          "C",
+          "M"
+        ],
+        "totalFloat": {
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "M": 0
+        },
+        "financialAssumptions": [],
+        "delayExposure": 0,
+        "overloads": [],
+        "calendar": "calendar",
+        "totalFloatMeaning": "Network float to the forecast finish; calendar slip is measured against SOP. Resource overload is reported, not leveled."
+      },
+      "findings": []
+    },
+    {
+      "id": "blind-r2-16",
+      "name": "Weekend and explicit holiday alter work duration while slip remains calendar days",
+      "pass": true,
+      "checks": [
+        {
+          "metric": "status",
+          "expected": "GO",
+          "actual": "GO",
+          "pass": true
+        },
+        {
+          "metric": "schedule.finish",
+          "expected": "2026-04-08",
+          "actual": "2026-04-08",
+          "pass": true
+        },
+        {
+          "metric": "schedule.slipDays",
+          "expected": 1,
+          "actual": 1,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingDirect",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "metric": "schedule.remainingOverhead",
+          "expected": 20,
+          "actual": 20,
+          "pass": true
+        },
+        {
+          "metric": "schedule.eac",
+          "expected": 320,
+          "actual": 320,
+          "pass": true
+        },
+        {
+          "metric": "schedule.budgetVariance",
+          "expected": -680,
+          "actual": -680,
+          "pass": true
+        },
+        {
+          "metric": "schedule.delayExposure",
+          "expected": 50,
+          "actual": 50,
+          "pass": true
+        }
+      ],
+      "error": null,
+      "status": "GO",
+      "plan": {
+        "available": true,
+        "valid": true,
+        "findings": [],
+        "tasks": [
+          {
+            "source": {
+              "file": "holdout/blind-r2-16.json",
+              "pointer": "/tasks/0",
+              "declaredSource": null,
+              "raw": {
+                "id": "WORK",
+                "duration": 2,
+                "remainingDays": 2,
+                "predecessors": [],
+                "costPerDay": 100,
+                "fixedCost": 0
+              }
+            },
+            "id": "WORK",
+            "duration": 2,
+            "remainingDays": 2,
+            "predecessors": [],
+            "costPerDay": 100,
+            "fixedCost": 0,
+            "days": 2,
+            "links": [],
+            "es": 0,
+            "ef": 2,
+            "start": "2026-04-03",
+            "finish": "2026-04-08",
+            "lf": 2,
+            "ls": 0,
+            "float": 0,
+            "critical": true
+          }
+        ],
+        "finish": "2026-04-08",
+        "slipDays": 1,
+        "remainingDays": 2,
+        "critical": [
+          "WORK"
+        ],
+        "direct": 200,
+        "remainingDirect": 200,
+        "overhead": 20,
+        "remainingOverhead": 20,
+        "spent": 100,
+        "eac": 320,
+        "budget": 1000,
+        "variance": -680,
+        "budgetVariance": -680,
+        "criticalTasks": [
+          "WORK"
+        ],
+        "totalFloat": {
+          "WORK": 0
+        },
+        "financialAssumptions": [],
+        "delayExposure": 50,
+        "overloads": [],
+        "calendar": "business",
+        "totalFloatMeaning": "Network float to the forecast finish; calendar slip is measured against SOP. Resource overload is reported, not leveled."
+      },
+      "findings": []
+    }
+  ],
+  "interpretation": "Independent AI-authored scenarios. Not industry certification, real-user validation or human expert approval."
+}

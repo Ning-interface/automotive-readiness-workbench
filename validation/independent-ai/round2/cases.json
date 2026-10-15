@@ -1,0 +1,212 @@
+{
+  "cases": [
+    {
+      "id":"blind-r2-01",
+      "name":"Inclusive numeric boundary and a future-gate requirement are legitimate",
+      "input":{
+        "project":{"id":"R2-01","asOf":"2026-04-01","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"CURRENT","from":"A","critical":true},{"id":"LATER","from":"SOP","critical":true}],
+        "evidence":[{"id":"CURRENT","status":"verified","revision":"R2","reviewer":"Boundary Reviewer","reviewedAt":"2026-04-01","owner":"Cooling Owner","acceptance":"Flow 9 through 11 inclusive","result":"Upper boundary passes","value":11,"min":9,"max":11,"unit":"l/min","dependencies":[]}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"status":"GO"},
+      "rationale":"Equality with a bound is not failure. The review date equals asOf and is not future. LATER has not reached its first applicable gate and needs no current evidence. This is a new false-positive control combining three legitimate boundaries."
+    },
+    {
+      "id":"blind-r2-02",
+      "name":"Conflicting duplicate evidence identities cannot select the favorable copy",
+      "input":{
+        "project":{"id":"R2-02","asOf":"2026-04-01","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[
+          {"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]},
+          {"id":"FLOW","status":"rejected","revision":"R2","reviewer":"Reviewer B","reviewedAt":"2026-03-31","owner":"Owner B","acceptance":"Flow passes","result":"Fail","dependencies":[]}
+        ],"waivers":[],"changes":[]
+      },
+      "expected":{"acceptableStatuses":["HOLD","REVIEW_REQUIRED"],"hasCitations":true},
+      "rationale":"Duplicate evidence identity is an import error even when one copy is approved. The exact finding code is unspecified; a non-release state and an attributable finding are required."
+    },
+    {
+      "id":"blind-r2-03",
+      "name":"Duplicate requirements are an import error despite identical metadata",
+      "input":{
+        "project":{"id":"R2-03","asOf":"2026-04-01","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false},{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"acceptableStatuses":["HOLD","REVIEW_REQUIRED"],"hasCitations":true},
+      "rationale":"The manifest explicitly prohibits duplicate IDs. Identical duplicate rows must not silently disappear or allow GO."
+    },
+    {
+      "id":"blind-r2-04",
+      "name":"Unknown first-applicable gate must not postpone a requirement indefinitely",
+      "input":{
+        "project":{"id":"R2-04","asOf":"2026-04-01","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"Z9","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"acceptableStatuses":["HOLD","REVIEW_REQUIRED"],"hasCitations":true},
+      "rationale":"Z9 is outside the contract's gate order and is an import error. A verified report cannot cure invalid applicability configuration."
+    },
+    {
+      "id":"blind-r2-05",
+      "name":"Numeric-invalid evidence cannot be rescued by a complete waiver",
+      "input":{
+        "project":{"id":"R2-05","asOf":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow within numeric bounds","result":"Pass","dependencies":[],"value":"not measured","min":9,"max":11,"unit":"l/min"}],
+        "waivers":[{"id":"WNUM","evidence":"FLOW","approved":true,"authority":"Program Authority","scope":"HV-COOLING","allowedGates":["C"],"expires":"2026-05-01","signedAt":"2026-03-30","restriction":"Limited pilot parts only"}],"changes":[]
+      },
+      "expected":{"status":"HOLD","hasCitations":true},
+      "rationale":"The numeric field is present but nonnumeric; it must not be ignored, coerced to zero or waived. The contract expressly excludes numeric-invalid evidence from concessions."
+    },
+    {
+      "id":"blind-r2-06",
+      "name":"Calendar-impossible review date cannot normalize into a real approval",
+      "input":{
+        "project":{"id":"R2-06","asOf":"2026-04-01","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-02-30","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"status":"HOLD","hasCitations":true},
+      "rationale":"February 30 is not a valid date. Some date libraries roll it into March, which must not produce accepted evidence. This differs from the prior future-but-valid date case."
+    },
+    {
+      "id":"blind-r2-07",
+      "name":"SOP concession expires after assessment but before the selected gate date",
+      "input":{
+        "project":{"id":"R2-07","asOf":"2026-04-01","sop":"2026-04-20","gate":"SOP","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"open","revision":"R2","owner":"Owner A","acceptance":"Validation completed","result":"Pending","dependencies":[]}],
+        "waivers":[{"id":"WSOP","evidence":"FLOW","approved":true,"authority":"Program Authority","scope":"HV-COOLING","allowedGates":["SOP"],"expires":"2026-04-10","signedAt":"2026-03-30","restriction":"Pilot assemblies only"}],"changes":[]
+      },
+      "expected":{"status":"HOLD","hasCitations":true},
+      "rationale":"The waiver remains valid at asOf but does not cover the selected SOP gate's explicit April 20 date. Both dates must be covered."
+    },
+    {
+      "id":"blind-r2-08",
+      "name":"Future concession signature is not current approval",
+      "input":{
+        "project":{"id":"R2-08","asOf":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"open","revision":"R2","owner":"Owner A","acceptance":"Validation completed","result":"Pending","dependencies":[]}],
+        "waivers":[{"id":"WFUT","evidence":"FLOW","approved":true,"authority":"Program Authority","scope":"HV-COOLING","allowedGates":["C"],"expires":"2026-05-01","signedAt":"2026-04-02","restriction":"Pilot assemblies only"}],"changes":[]
+      },
+      "expected":{"status":"HOLD","hasCitations":true},
+      "rationale":"Concession approval is dated one day after asOf; otherwise complete metadata cannot satisfy signedAt <= asOf."
+    },
+    {
+      "id":"blind-r2-09",
+      "name":"A waiver approved for adjacent gates cannot authorize the current gate",
+      "input":{
+        "project":{"id":"R2-09","asOf":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"open","revision":"R2","owner":"Owner A","acceptance":"Validation completed","result":"Pending","dependencies":[]}],
+        "waivers":[{"id":"WGATE","evidence":"FLOW","approved":true,"authority":"Program Authority","scope":"HV-COOLING","allowedGates":["B","PVS"],"expires":"2026-05-01","signedAt":"2026-03-30","restriction":"Pilot assemblies only"}],"changes":[]
+      },
+      "expected":{"status":"HOLD","hasCitations":true},
+      "rationale":"C lies between the listed stages but is not listed. allowedGates is explicit membership rather than a range spanning adjacent entries."
+    },
+    {
+      "id":"blind-r2-10",
+      "name":"A parent concession cannot approve a rejected dependency",
+      "input":{
+        "project":{"id":"R2-10","asOf":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2","scope":"HV-COOLING"},
+        "requirements":[{"id":"SYSTEM","from":"A","critical":false}],
+        "evidence":[
+          {"id":"SYSTEM","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Component evidence accepted first","result":"Pass","dependencies":["COMPONENT"]},
+          {"id":"COMPONENT","status":"rejected","revision":"R2","reviewer":"Reviewer B","reviewedAt":"2026-03-31","owner":"Owner B","acceptance":"No leakage","result":"Leak","dependencies":[]}
+        ],
+        "waivers":[{"id":"WPARENT","evidence":"SYSTEM","approved":true,"authority":"Program Authority","scope":"HV-COOLING","allowedGates":["C"],"expires":"2026-05-01","signedAt":"2026-03-30","restriction":"Pilot assemblies only"}],"changes":[]
+      },
+      "expected":{"status":"HOLD","hasCitations":true},
+      "rationale":"The parent looks approved and has a valid noncritical waiver, but its prerequisite is rejected. Failed dependent evidence is an explicit non-waivable condition."
+    },
+    {
+      "id":"blind-r2-11",
+      "name":"Omitted project scope cannot be invented from concession scope",
+      "input":{
+        "project":{"id":"R2-11","asOf":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"open","revision":"R2","owner":"Owner A","acceptance":"Validation completed","result":"Pending","dependencies":[]}],
+        "waivers":[{"id":"WSCOPE","evidence":"FLOW","approved":true,"authority":"Program Authority","scope":"HV-COOLING","allowedGates":["C"],"expires":"2026-05-01","signedAt":"2026-03-30","restriction":"Pilot assemblies only"}],"changes":[]
+      },
+      "expected":{"acceptableStatuses":["HOLD","REVIEW_REQUIRED"]},
+      "rationale":"Scope is a required release-assessment agreement. A waiver's own scope cannot fill an absent project agreement or override invalid configuration."
+    },
+    {
+      "id":"blind-r2-12",
+      "name":"Future actual completion cannot mark work as complete today",
+      "input":{
+        "project":{"id":"R2-12","asOf":"2026-04-01","startDate":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2","scope":"HV-COOLING","calendar":"calendar"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "tasks":[{"id":"FUTURE-DONE","duration":4,"remainingDays":0,"actualFinish":"2026-04-02","predecessors":[],"costPerDay":100,"fixedCost":0}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"acceptableStatuses":["HOLD","REVIEW_REQUIRED"],"hasCitations":true},
+      "rationale":"The task claims zero remaining work but its actual completion is tomorrow. The explicit complete-task date rule forbids silently accepting this schedule."
+    },
+    {
+      "id":"blind-r2-13",
+      "name":"Finish-to-start lead is outside the supported nonnegative-lag model",
+      "input":{
+        "project":{"id":"R2-13","asOf":"2026-04-01","startDate":"2026-04-01","sop":"2026-04-20","gate":"C","revision":"R2","scope":"HV-COOLING","calendar":"calendar"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "tasks":[{"id":"A","duration":2,"predecessors":[]},{"id":"B","duration":2,"predecessors":["A:FS-1"]}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"acceptableStatuses":["HOLD","REVIEW_REQUIRED"],"hasCitations":true},
+      "rationale":"The predecessor exists, but a negative lag is expressly unsupported. It must not be interpreted as ordinary FS or silently allowed as a lead."
+    },
+    {
+      "id":"blind-r2-14",
+      "name":"Actual completed work and reduced remaining duration are costed correctly",
+      "input":{
+        "project":{"id":"R2-14","asOf":"2026-04-04","startDate":"2026-03-01","sop":"2026-04-05","gate":"C","revision":"R2","scope":"HV-COOLING","currency":"CNY","budget":500,"spent":400,"overheadPerDay":10,"delayCostPerDay":25,"calendar":"calendar"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-04-03","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "tasks":[
+          {"id":"DONE","duration":10,"remainingDays":0,"actualFinish":"2026-04-01","predecessors":[],"costPerDay":999,"fixedCost":999},
+          {"id":"REMAIN","duration":20,"remainingDays":2,"predecessors":["DONE:FS+1"],"costPerDay":50,"fixedCost":30}
+        ],"waivers":[],"changes":[]
+      },
+      "expected":{"status":"GO","schedule":{"finish":"2026-04-06","slipDays":1,"remainingDirect":130,"remainingOverhead":20,"eac":550,"budgetVariance":50,"delayExposure":25}},
+      "rationale":"DONE is historical and contributes no remaining direct cost, including no repeated fixed cost. Its lag has elapsed by asOf. REMAIN uses two remaining days, not original duration 20, starts April 4 and finishes April 6. Direct 2*50+30=130; overhead 2*10=20; EAC 550. Slip is one calendar day and separate exposure is 25."
+    },
+    {
+      "id":"blind-r2-15",
+      "name":"Absolute not-before constraint and zero-duration milestone retain exact costs",
+      "input":{
+        "project":{"id":"R2-15","asOf":"2026-04-01","startDate":"2026-03-30","sop":"2026-04-08","gate":"C","revision":"R2","scope":"HV-COOLING","currency":"CNY","budget":300,"spent":100,"overheadPerDay":10,"delayCostPerDay":50,"calendar":"calendar"},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-03-31","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "tasks":[
+          {"id":"A","duration":1,"remainingDays":1,"predecessors":[],"costPerDay":20,"fixedCost":0},
+          {"id":"B","duration":2,"remainingDays":2,"predecessors":["A"],"costPerDay":30,"fixedCost":10},
+          {"id":"C","duration":1,"remainingDays":1,"predecessors":["A"],"notBefore":"2026-04-05","costPerDay":40,"fixedCost":20},
+          {"id":"M","duration":0,"remainingDays":0,"predecessors":["B","C"],"costPerDay":999,"fixedCost":5}
+        ],"waivers":[],"changes":[]
+      },
+      "expected":{"status":"GO","schedule":{"finish":"2026-04-06","slipDays":0,"remainingDirect":155,"remainingOverhead":50,"eac":305,"budgetVariance":5,"delayExposure":0}},
+      "rationale":"A finishes April 2 and B April 4. C waits for April 5 and finishes April 6, when the zero-day milestone occurs. Waiting time is part of the five-day project overhead. A zero-duration incomplete milestone still carries its fixed cost: direct=20+70+60+5=155. Its costPerDay contributes zero."
+    },
+    {
+      "id":"blind-r2-16",
+      "name":"Weekend and explicit holiday alter work duration while slip remains calendar days",
+      "input":{
+        "project":{"id":"R2-16","asOf":"2026-04-03","startDate":"2026-04-03","sop":"2026-04-07","gate":"C","revision":"R2","scope":"HV-COOLING","currency":"CNY","budget":1000,"spent":100,"overheadPerDay":10,"delayCostPerDay":50,"calendar":"business","holidays":["2026-04-06"]},
+        "requirements":[{"id":"FLOW","from":"A","critical":false}],
+        "evidence":[{"id":"FLOW","status":"verified","revision":"R2","reviewer":"Reviewer A","reviewedAt":"2026-04-02","owner":"Owner A","acceptance":"Flow passes","result":"Pass","dependencies":[]}],
+        "tasks":[{"id":"WORK","duration":2,"remainingDays":2,"predecessors":[],"costPerDay":100,"fixedCost":0}],
+        "waivers":[],"changes":[]
+      },
+      "expected":{"status":"GO","schedule":{"finish":"2026-04-08","slipDays":1,"remainingDirect":200,"remainingOverhead":20,"eac":320,"budgetVariance":-680,"delayExposure":50}},
+      "rationale":"April 3 is Friday. Saturday and Sunday are excluded and Monday April 6 is an explicit holiday. The two worked days are Friday and Tuesday April 7, with exclusive finish Wednesday April 8. Overhead uses two business days; slip against Tuesday SOP is one calendar day."
+    }
+  ]
+}

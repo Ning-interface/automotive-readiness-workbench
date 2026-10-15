@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "suite": "independent-contract-holdout-round2",
+  "frozenAt": "2026-10-15T07:22:32Z",
+  "caseCount": 16,
+  "suiteSha256": "393e38c65aeb1ef3dfac7c9318c2ccb63f81161153b7fb77152d6d24e936c2e2",
+  "frozenEngineSha256": "f993ac64c2c80cf06206be81de9924789205f137015704aabe4f24fa64ee85b1",
+  "authorRole": "Independent AI fixture author; not a human expert reviewer",
+  "humanExpertValidation": false,
+  "independence": {
+    "implementationSourceInspected": false,
+    "engineBytesHashedOnly": true,
+    "suiteAuthoredBeforeExecution": true,
+    "taskContentSources": ["Original IMPORT-CONTRACT.md", "Own frozen round1 fixtures and own round1 semantic review", "Updated evaluate-suite.js for output-field matching only"],
+    "otherFixturesInspected": false,
+    "expectedValuesAdjustedAfterExecution": false
+  },
+  "designRationale": "Sixteen new cases exercise previously untested inclusive measurement and date boundaries, gate applicability, duplicate identities, invalid stage, numeric-invalid concession prohibition, impossible date normalization, selected SOP expiry, future signatures, explicit allowed-gate membership, failed dependent nonwaivability, missing required scope, future completion, unsupported negative lag, historical completed-task cost exclusion, reduced remaining duration, fixed-cost milestone semantics, absolute start constraints, and business-calendar holiday arithmetic. Four legitimate GO cases test false positives. Exact numeric forecasts are independently calculated before execution.",
+  "oracleInterpretation": {
+    "acceptableStatuses": "HOLD or REVIEW_REQUIRED are accepted for invalid configuration/schedule conditions because the source contract specifies visible invalidity but no exact aggregate UI token.",
+    "statusGO": "Evidence approval can remain GO alongside transparently reported schedule slip or budget variance; neither alone is stated as an automatic evidence hard stop.",
+    "hasCitations": "The evaluator checks at least one nonempty finding location, not proof that every required finding cites every relevant row. Full emitted findings will be reviewed separately.",
+    "extraFindings": "Truthful additional findings are permitted. Exact diagnostic identifiers are not a requirement unless expressly asserted.",
+    "milestone": "A zero-duration task without actualFinish is an incomplete milestone; its fixed cost belongs to remaining direct cost and its daily-duration cost is zero.",
+    "businessDates": "The two worked days in case16 are April 3 and April 7. Exclusive boundary is April 8. Overhead follows business duration; SOP slip remains calendar days."
+  },
+  "priorRoundPreservation": {
+    "path": "../round1/initial-results.json",
+    "rawHarnessPassed": 1,
+    "rawHarnessTotal": 18,
+    "semanticReview": "../round1/initial-semantic-review.json",
+    "note": "Round1 raw 1/18 and separate semantic adjudication remain unchanged. Semantic adjudication did not replace the raw score and did not establish all extra metrics or source details."
+  },
+  "limitations": "Small independently AI-authored holdout, not human user validation, industrial expert validation, certification, or a production-readiness claim."
+}

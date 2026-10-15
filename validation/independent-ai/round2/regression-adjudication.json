@@ -1,0 +1,33 @@
+{
+  "kind":"independent-ai-post-fix-regression-adjudication",
+  "createdAt":"2026-10-15T07:25:18Z",
+  "humanExpertValidation":false,
+  "newBlindEvaluation":false,
+  "engineSha256":"4a761aa038d992de797a5de6d2fe0cfea0be9fe794b35359a20acd7e5e29e58f",
+  "suiteSha256":"393e38c65aeb1ef3dfac7c9318c2ccb63f81161153b7fb77152d6d24e936c2e2",
+  "fixturesUnchanged":true,
+  "implementationInspected":false,
+  "rawRegressionScore":{"passed":16,"failed":0,"total":16},
+  "semanticRegressionScore":{"accepted":16,"provenFailures":0,"total":16},
+  "retainedInitialScore":{"passed":15,"failed":1,"total":16,"path":"initial-results.json"},
+  "resultDelta":{
+    "changedCases":["blind-r2-07"],
+    "otherFifteenCaseResultsIdentical":true,
+    "before":"CONDITIONAL with SCOPED_CONCESSION despite expiry before selected SOP",
+    "after":"HOLD with REVIEW_NOT_ACCEPTED; concession is no longer accepted",
+    "assessment":"The exact frozen counterexample now behaves as required. No fixture or expected value was changed."
+  },
+  "checks":{
+    "legitimateGOControls":"All four pass",
+    "exactScheduleAndCostChecks":"All 21 pass",
+    "invalidSchedules":"Future actual finish and negative lag remain valid=false without forecast conclusions",
+    "citations":"All preregistered at-least-one-citation checks pass; this is not a universal source-coverage claim"
+  },
+  "scopeLimits":[
+    "This is post-fix regression on cases already disclosed to the implementer, not another blind generalization result.",
+    "The suite covers omitted explicit gateDate with a selected SOP date. The reported latest-of-three implementation rule was not source-inspected, and this exact suite does not independently test every explicit-gateDate permutation.",
+    "Generic invalid-waiver diagnostics and involved-source coverage observations from initial-semantic-review.json remain applicable."
+  ],
+  "preservation":"Initial 15/16 results and initial independent failure adjudication remain unchanged. Round1 initial raw 1/18 and its original semantic review also remain unchanged.",
+  "validationType":"Independent AI-authored contract regression; not human expert, industrial certification, real-user validation, or production readiness."
+}

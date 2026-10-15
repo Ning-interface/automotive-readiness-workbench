@@ -1,0 +1,58 @@
+{
+  "kind": "independent-ai-semantic-adjudication",
+  "humanExpertValidation": false,
+  "reviewedArtifact": "initial-results.json",
+  "engineSha256": "f993ac64c2c80cf06206be81de9924789205f137015704aabe4f24fa64ee85b1",
+  "suiteSha256": "393e38c65aeb1ef3dfac7c9318c2ccb63f81161153b7fb77152d6d24e936c2e2",
+  "implementationSourceInspected": false,
+  "fixturesOrExpectedValuesChangedAfterExecution": false,
+  "rawHarnessScore": {"passed":15,"failed":1,"total":16,"percentPassed":93.75},
+  "semanticScore": {"accepted":15,"provenBehavioralFailures":1,"total":16},
+  "observations": {
+    "runtimeExceptions": 0,
+    "legitimateGOCasesPassed": 4,
+    "legitimateGOCasesTotal": 4,
+    "adversarialNonreleaseCasesPassed": 11,
+    "adversarialNonreleaseCasesTotal": 12,
+    "exactCalendarAndCostChecksPassed": 21,
+    "exactCalendarAndCostChecksTotal": 21,
+    "invalidSchedulesSuppressForecast": "Cases12 and13 both have plan.valid=false, tasks=[], a cited reason and no finish/eac conclusions."
+  },
+  "provenFailures": [
+    {
+      "case": "blind-r2-07",
+      "classification": "Invalid concession accepted for selected SOP gate",
+      "expectedStatus": "HOLD",
+      "actualStatus": "CONDITIONAL",
+      "inputFacts": {
+        "asOf": "2026-04-01",
+        "selectedGate": "SOP",
+        "selectedGateDateFromProjectSop": "2026-04-20",
+        "waiverExpiry": "2026-04-10",
+        "evidenceStatus": "open",
+        "requirementCritical": false
+      },
+      "contractRule": "Waiver expiry covers both asOf and selected gate date (if available).",
+      "evidence": "The emitted SCOPED_CONCESSION finding accepts WSOP even though expiry precedes the explicit selected SOP date by ten days. No alternative evidence satisfies the mandatory FLOW requirement.",
+      "interpretation": "This is a real release-decision failure, not a diagnostic-label or aggregate-review-token mismatch. April10 covers asOf but not SOP April20, so the concession is invalid and FLOW remains unresolved.",
+      "minimumRemediationBehavior": "When the selected gate is SOP and project.sop is supplied, concession expiry must cover that date as well as asOf. Preserve valid current noncritical concessions that cover all applicable dates."
+    }
+  ],
+  "diagnosticObservations": [
+    "Cases02 and03 visibly reject evidence and requirement duplicate identities, with locations pointing to both duplicate rows in DUPLICATE_ID findings.",
+    "Case04 rejects the unknown gate with a cited INVALID_REQUIREMENT finding; its additional aggregate NO_APPLICABLE_REQUIREMENTS finding has no locations. The frozen evaluator asserts at least one citation, not universal citation coverage.",
+    "Case05 preserves original nonnumeric measurement text in source raw data and reports both invalid acceptance and numeric parsing findings, despite the waiver.",
+    "Case06 rejects February30 and emits INVALID_DATE rather than rolling it into March.",
+    "Cases08 and09 conservatively reject future signature and gate mismatch; generic review wording identifies the unresolved evidence rather than the invalid waiver row itself. These pass the frozen acceptance oracle but diagnostic explanations could be more specific.",
+    "Case10 holds for the failed dependency despite a valid parent concession. Its DEPENDENCY_NOT_VERIFIED location cites the parent evidence and requirement; the rejected dependency row is not included in that finding's locations.",
+    "Cases12 and13 emit valid=false and no forecast, correctly distinguishing invalid schedule configuration from an ordinary late plan.",
+    "The three financial cases verify completed-cost exclusion, remainingDays rather than original duration, fixed cost on a zero-day incomplete milestone, waiting-time overhead, business holidays and separate calendar delay exposure."
+  ],
+  "round1Transparency": {
+    "unchangedRawResults": "../round1/initial-results.json",
+    "unchangedRawScore": "1/18",
+    "separateAdjudication": "../round1/initial-semantic-review.json",
+    "note": "Round1 semantic acceptance did not overwrite its raw 1/18 score. Round2 uses preregistered acceptable statuses and no guessed diagnostic labels; its 15/16 raw result requires no retrospective oracle changes."
+  },
+  "limitations": "Independent AI-authored contract tests, not human expert or real-user validation. Passing a small holdout does not establish industrial conformity, production readiness or complete citation coverage. No engine source was inspected and no fixes were performed by this evaluator."
+}
