@@ -1,0 +1,479 @@
+TAP version 13
+# Subtest: real CLI CSV registers reproduce independently calculated finish and EAC
+ok 1 - real CLI CSV registers reproduce independently calculated finish and EAC
+  ---
+  duration_ms: 169.0795
+  type: 'test'
+  ...
+# Subtest: real PDF/DOCX CLI pipeline preserves literal excerpts, hashes and unresolved mapping
+ok 2 - real PDF/DOCX CLI pipeline preserves literal excerpts, hashes and unresolved mapping
+  ---
+  duration_ms: 755.9925
+  type: 'test'
+  ...
+# Subtest: recognized real DOCX table contributes a row-cited evidence record
+ok 3 - recognized real DOCX table contributes a row-cited evidence record
+  ---
+  duration_ms: 379.8341
+  type: 'test'
+  ...
+# Subtest: instruction-like document text cannot approve an open evidence requirement
+ok 4 - instruction-like document text cannot approve an open evidence requirement
+  ---
+  duration_ms: 689.929
+  type: 'test'
+  ...
+# Subtest: image-only PDF is explicitly warned in exported analysis and report
+ok 5 - image-only PDF is explicitly warned in exported analysis and report
+  ---
+  duration_ms: 429.4602
+  type: 'test'
+  ...
+# Subtest: sealing baseline is HOLD with three traceable release blockers
+ok 6 - sealing baseline is HOLD with three traceable release blockers
+  ---
+  duration_ms: 5.9428
+  type: 'test'
+  ...
+# Subtest: a critical failure is never averaged away by otherwise complete evidence
+ok 7 - a critical failure is never averaged away by otherwise complete evidence
+  ---
+  duration_ms: 0.5292
+  type: 'test'
+  ...
+# Subtest: a signed trial concession yields CONDITIONAL at the permitted gate only
+ok 8 - a signed trial concession yields CONDITIONAL at the permitted gate only
+  ---
+  duration_ms: 0.4876
+  type: 'test'
+  ...
+# Subtest: expired concession cannot support conditional release
+ok 9 - expired concession cannot support conditional release
+  ---
+  duration_ms: 0.5705
+  type: 'test'
+  ...
+# Subtest: concession must cover the planned gate date, not just the current date
+ok 10 - concession must cover the planned gate date, not just the current date
+  ---
+  duration_ms: 0.6602
+  type: 'test'
+  ...
+# Subtest: a concession without valid authority is not accepted
+ok 11 - a concession without valid authority is not accepted
+  ---
+  duration_ms: 0.5048
+  type: 'test'
+  ...
+# Subtest: a concession without valid scope is not accepted
+ok 12 - a concession without valid scope is not accepted
+  ---
+  duration_ms: 1.8269
+  type: 'test'
+  ...
+# Subtest: a concession without valid restriction is not accepted
+ok 13 - a concession without valid restriction is not accepted
+  ---
+  duration_ms: 0.5643
+  type: 'test'
+  ...
+# Subtest: a concession without valid signedAt is not accepted
+ok 14 - a concession without valid signedAt is not accepted
+  ---
+  duration_ms: 0.4504
+  type: 'test'
+  ...
+# Subtest: unsigned or future-dated authorization cannot clear an exception
+ok 15 - unsigned or future-dated authorization cannot clear an exception
+  ---
+  duration_ms: 0.8366
+  type: 'test'
+  ...
+# Subtest: critical gaps cannot be waived by the portfolio exception rule
+ok 16 - critical gaps cannot be waived by the portfolio exception rule
+  ---
+  duration_ms: 0.3478
+  type: 'test'
+  ...
+# Subtest: verified recovery closes the evidence path without changing baseline data
+ok 17 - verified recovery closes the evidence path without changing baseline data
+  ---
+  duration_ms: 1.0422
+  type: 'test'
+  ...
+# Subtest: GO at SOP does not imply operations handover
+ok 18 - GO at SOP does not imply operations handover
+  ---
+  duration_ms: 0.3522
+  type: 'test'
+  ...
+# Subtest: a new configuration invalidates affected accepted evidence
+ok 19 - a new configuration invalidates affected accepted evidence
+  ---
+  duration_ms: 0.5794
+  type: 'test'
+  ...
+# Subtest: an accepted downstream dossier cannot bypass failed dependencies
+ok 20 - an accepted downstream dossier cannot bypass failed dependencies
+  ---
+  duration_ms: 0.3284
+  type: 'test'
+  ...
+# Subtest: missing reviewer and future review date cannot count as verified
+ok 21 - missing reviewer and future review date cannot count as verified
+  ---
+  duration_ms: 0.4417
+  type: 'test'
+  ...
+# Subtest: unreferenced evidence cannot fulfill a missing dependency
+ok 22 - unreferenced evidence cannot fulfill a missing dependency
+  ---
+  duration_ms: 0.3381
+  type: 'test'
+  ...
+# Subtest: all scenario/gate combinations keep counts and release disposition consistent
+ok 23 - all scenario/gate combinations keep counts and release disposition consistent
+  ---
+  duration_ms: 12.5776
+  type: 'test'
+  ...
+# Subtest: every main view renders meaningful content without a runtime exception
+ok 24 - every main view renders meaningful content without a runtime exception
+  ---
+  duration_ms: 127.4796
+  type: 'test'
+  ...
+# Subtest: case and snapshot controls recalculate visible recommendation
+ok 25 - case and snapshot controls recalculate visible recommendation
+  ---
+  duration_ms: 71.4882
+  type: 'test'
+  ...
+# Subtest: evidence record opens with criterion, review, configuration and dependencies
+ok 26 - evidence record opens with criterion, review, configuration and dependencies
+  ---
+  duration_ms: 56.1754
+  type: 'test'
+  ...
+# Subtest: search filters evidence rows without replacing the search control
+ok 27 - search filters evidence rows without replacing the search control
+  ---
+  duration_ms: 48.3172
+  type: 'test'
+  ...
+# Subtest: R4 what-if reopens an otherwise releasable program and reset restores it
+ok 28 - R4 what-if reopens an otherwise releasable program and reset restores it
+  ---
+  duration_ms: 46.4404
+  type: 'test'
+  ...
+# Subtest: downloaded pack has the same disposition and includes inspectable evidence and assumptions
+ok 29 - downloaded pack has the same disposition and includes inspectable evidence and assumptions
+  ---
+  duration_ms: 52.0109
+  type: 'test'
+  ...
+# Subtest: exported evidence CSV preserves criterion, revision and gate disposition
+ok 30 - exported evidence CSV preserves criterion, revision and gate disposition
+  ---
+  duration_ms: 42.8982
+  type: 'test'
+  ...
+# Subtest: the packaged offline application executes with all scripts embedded
+ok 31 - the packaged offline application executes with all scripts embedded
+  ---
+  duration_ms: 89.9195
+  type: 'test'
+  ...
+# Subtest: all file-driven workbench views render and the seeded scenario propagates
+ok 32 - all file-driven workbench views render and the seeded scenario propagates
+  ---
+  duration_ms: 52.9289
+  type: 'test'
+  ...
+# Subtest: workspace snapshot restores imported records, scenarios and declared reviews
+ok 33 - workspace snapshot restores imported records, scenarios and declared reviews
+  ---
+  duration_ms: 93.9017
+  type: 'test'
+  ...
+# Subtest: raw document import is explicitly rejected in offline mode
+ok 34 - raw document import is explicitly rejected in offline mode
+  ---
+  duration_ms: 61.8892
+  type: 'test'
+  ...
+# Subtest: malformed bundle is quarantined without corrupting the active workspace
+ok 35 - malformed bundle is quarantined without corrupting the active workspace
+  ---
+  duration_ms: 45.6679
+  type: 'test'
+  ...
+# Subtest: local HTTP boundary and static assets
+    # Subtest: health explicitly declares no cloud AI
+    ok 1 - health explicitly declares no cloud AI
+      ---
+      duration_ms: 42.1235
+      type: 'test'
+      ...
+    # Subtest: new application scripts are served
+    ok 2 - new application scripts are served
+      ---
+      duration_ms: 6.4067
+      type: 'test'
+      ...
+    # Subtest: hidden source control files are denied
+    ok 3 - hidden source control files are denied
+      ---
+      duration_ms: 3.9684
+      type: 'test'
+      ...
+    # Subtest: mutating static methods are denied
+    ok 4 - mutating static methods are denied
+      ---
+      duration_ms: 7.7365
+      type: 'test'
+      ...
+    # Subtest: cross-origin extraction is denied
+    ok 5 - cross-origin extraction is denied
+      ---
+      duration_ms: 6.3995
+      type: 'test'
+      ...
+    # Subtest: same-origin unsupported payload is rejected
+    ok 6 - same-origin unsupported payload is rejected
+      ---
+      duration_ms: 2.3058
+      type: 'test'
+      ...
+    # Subtest: invalid document bytes fail without a successful extraction
+    ok 7 - invalid document bytes fail without a successful extraction
+      ---
+      duration_ms: 354.9785
+      type: 'test'
+      ...
+    # Subtest: foreign Host headers are rejected
+    ok 8 - foreign Host headers are rejected
+      ---
+      duration_ms: 5.4286
+      type: 'test'
+      ...
+    1..8
+ok 36 - local HTTP boundary and static assets
+  ---
+  duration_ms: 454.3668
+  type: 'test'
+  ...
+# Subtest: unseen bundle produces calculated numeric contradiction and cited quality findings
+ok 37 - unseen bundle produces calculated numeric contradiction and cited quality findings
+  ---
+  duration_ms: 9.3199
+  type: 'test'
+  ...
+# Subtest: legitimate declared evidence can yield GO and source code remains unchanged
+ok 38 - legitimate declared evidence can yield GO and source code remains unchanged
+  ---
+  duration_ms: 0.8248
+  type: 'test'
+  ...
+# Subtest: unknown requirements prevent a false GO
+ok 39 - unknown requirements prevent a false GO
+  ---
+  duration_ms: 0.6941
+  type: 'test'
+  ...
+# Subtest: a manifest with only future criteria cannot establish current readiness
+ok 40 - a manifest with only future criteria cannot establish current readiness
+  ---
+  duration_ms: 0.5238
+  type: 'test'
+  ...
+# Subtest: a failed bound overrides a verified status and cannot be waived
+ok 41 - a failed bound overrides a verified status and cannot be waived
+  ---
+  duration_ms: 0.6771
+  type: 'test'
+  ...
+# Subtest: missing measured value with a declared limit remains a blocker
+ok 42 - missing measured value with a declared limit remains a blocker
+  ---
+  duration_ms: 0.4681
+  type: 'test'
+  ...
+# Subtest: concessions are bounded by scope, date, gate and noncritical eligibility
+ok 43 - concessions are bounded by scope, date, gate and noncritical eligibility
+  ---
+  duration_ms: 2.5322
+  type: 'test'
+  ...
+# Subtest: unapproved configuration changes reopen otherwise verified release evidence
+ok 44 - unapproved configuration changes reopen otherwise verified release evidence
+  ---
+  duration_ms: 0.6092
+  type: 'test'
+  ...
+# Subtest: review placeholders and future review dates do not establish acceptance
+ok 45 - review placeholders and future review dates do not establish acceptance
+  ---
+  duration_ms: 1.3907
+  type: 'test'
+  ...
+# Subtest: missing, cyclic and duplicated evidence identities remain visible
+ok 46 - missing, cyclic and duplicated evidence identities remain visible
+  ---
+  duration_ms: 1.0379
+  type: 'test'
+  ...
+# Subtest: CSV preserves physical line and actual record position across blanks and quoted newlines
+ok 47 - CSV preserves physical line and actual record position across blanks and quoted newlines
+  ---
+  duration_ms: 0.9848
+  type: 'test'
+  ...
+# Subtest: Chinese identifiers and headers survive mapping and operation matching
+ok 48 - Chinese identifiers and headers survive mapping and operation matching
+  ---
+  duration_ms: 0.4421
+  type: 'test'
+  ...
+# Subtest: blank and punctuation do not silently become true booleans
+ok 49 - blank and punctuation do not silently become true booleans
+  ---
+  duration_ms: 0.0829
+  type: 'test'
+  ...
+# Subtest: mapping override can disable an incorrect automatic field match
+ok 50 - mapping override can disable an incorrect automatic field match
+  ---
+  duration_ms: 0.1587
+  type: 'test'
+  ...
+# Subtest: duplicate header aliases require explicit mapping resolution
+ok 51 - duplicate header aliases require explicit mapping resolution
+  ---
+  duration_ms: 0.2101
+  type: 'test'
+  ...
+# Subtest: CPM fork/join calculates finish, network float, EAC and separate delay exposure
+ok 52 - CPM fork/join calculates finish, network float, EAC and separate delay exposure
+  ---
+  duration_ms: 0.8605
+  type: 'test'
+  ...
+# Subtest: scenario propagation changes dependent dates/cost without mutating the baseline
+ok 53 - scenario propagation changes dependent dates/cost without mutating the baseline
+  ---
+  duration_ms: 0.4669
+  type: 'test'
+  ...
+# Subtest: business calendar excludes weekends and supplied holidays
+ok 54 - business calendar excludes weekends and supplied holidays
+  ---
+  duration_ms: 0.319
+  type: 'test'
+  ...
+# Subtest: zero override remains zero rather than restoring the baseline duration
+ok 55 - zero override remains zero rather than restoring the baseline duration
+  ---
+  duration_ms: 0.2593
+  type: 'test'
+  ...
+# Subtest: cycles, unknown predecessors and malformed durations withhold schedule results
+ok 56 - cycles, unknown predecessors and malformed durations withhold schedule results
+  ---
+  duration_ms: 0.4384
+  type: 'test'
+  ...
+# Subtest: unknown scenario identities and fields are not silently ignored
+ok 57 - unknown scenario identities and fields are not silently ignored
+  ---
+  duration_ms: 0.2073
+  type: 'test'
+  ...
+# Subtest: completed task cost is not counted again in remaining direct cost
+ok 58 - completed task cost is not counted again in remaining direct cost
+  ---
+  duration_ms: 0.3208
+  type: 'test'
+  ...
+# Subtest: one controlled characteristic does not clear another at the same operation
+ok 59 - one controlled characteristic does not clear another at the same operation
+  ---
+  duration_ms: 0.2719
+  type: 'test'
+  ...
+# Subtest: invalid PFMEA severity and ambiguous many-row matching are exposed
+ok 60 - invalid PFMEA severity and ambiguous many-row matching are exposed
+  ---
+  duration_ms: 0.1849
+  type: 'test'
+  ...
+# Subtest: retrieval returns literal source excerpts and never treats source instructions as actions
+ok 61 - retrieval returns literal source excerpts and never treats source instructions as actions
+  ---
+  duration_ms: 0.9822
+  type: 'test'
+  ...
+# Subtest: reports escape hostile source text and preserve scope, citations and cost bridge
+ok 62 - reports escape hostile source text and preserve scope, citations and cost bridge
+  ---
+  duration_ms: 0.9567
+  type: 'test'
+  ...
+# Subtest: the actual upstream XLSX examples parse with preserved worksheet rows
+ok 63 - the actual upstream XLSX examples parse with preserved worksheet rows
+  ---
+  duration_ms: 126.702
+  type: 'test'
+  ...
+# Subtest: an ignored non-register sheet does not silently contribute release data
+ok 64 - an ignored non-register sheet does not silently contribute release data
+  ---
+  duration_ms: 0.1286
+  type: 'test'
+  ...
+# Subtest: extracted DOCX and Python XLSX array rows do not resolve Array.values as headers
+ok 65 - extracted DOCX and Python XLSX array rows do not resolve Array.values as headers
+  ---
+  duration_ms: 0.5323
+  type: 'test'
+  ...
+# Subtest: SOP waiver must last through SOP even if no separate gateDate is declared
+ok 66 - SOP waiver must last through SOP even if no separate gateDate is declared
+  ---
+  duration_ms: 0.7954
+  type: 'test'
+  ...
+# Subtest: normalized interchange retains unresolved import limitations as declared input
+ok 67 - normalized interchange retains unresolved import limitations as declared input
+  ---
+  duration_ms: 0.7077
+  type: 'test'
+  ...
+# Subtest: malformed document collections are rejected explicitly
+ok 68 - malformed document collections are rejected explicitly
+  ---
+  duration_ms: 0.5009
+  type: 'test'
+  ...
+# Subtest: invalid numeric limits survive JSON round-trip rather than silently becoming absent
+ok 69 - invalid numeric limits survive JSON round-trip rather than silently becoming absent
+  ---
+  duration_ms: 1.1557
+  type: 'test'
+  ...
+# Subtest: oversized XLSX ranges are rejected rather than silently truncated
+ok 70 - oversized XLSX ranges are rejected rather than silently truncated
+  ---
+  duration_ms: 0.2127
+  type: 'test'
+  ...
+1..70
+# tests 78
+# suites 0
+# pass 78
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2550.6318
