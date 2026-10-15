@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.log
+.qa-cli-*/
+__pycache__/
+.venv/
+review-output/
+scenario-review/
+program-workspace.json

@@ -1,0 +1,7 @@
+{
+  "name": "automotive-program-readiness",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Local automotive readiness workbench: real files, evidence checks, CPM, costs and a tool-backed Skill.",
+  "scripts": { "start": "node server.js", "test": "node --test engine.test.js workbench.test.js render.test.js server.test.js cli.test.js", "check": "node --check app.js && node --check workbench-core.js && node --check workbench-ui.js && node --check cli.js" }
+}
