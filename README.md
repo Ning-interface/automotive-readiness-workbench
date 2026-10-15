@@ -2,7 +2,7 @@
 
 [Live workbench](https://ning-interface.github.io/automotive-readiness-workbench/) · [Validation evidence](VALIDATION.md) · [Tool-backed Skill](skills/automotive-readiness-review/SKILL.md)
 
-A local, file-driven automotive program review tool and reusable tool-backed AI Skill. Independently authored by Ning / 朱芫宁. The original reference playbook remains available; it is explicitly synthetic, not a claimed CATL or VW delivery.
+A local, file-driven automotive program review tool and reusable tool-backed AI Skill. Independently authored by Ning . The original reference playbook remains available; it is explicitly synthetic, not a claimed CATL or VW delivery.
 
 ## What changed
 
