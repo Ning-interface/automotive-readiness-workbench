@@ -1,0 +1,4 @@
+interface:
+  display_name: "Automotive Readiness Review"
+  short_description: "Review gate evidence, quality gaps, schedules and cost"
+  default_prompt: "Use $automotive-readiness-review to review this project workbook and validation report, then produce a cited steering memo."
