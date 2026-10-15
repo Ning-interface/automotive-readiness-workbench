@@ -1,0 +1,21 @@
+{
+  "schema": "packaged-skill-integrity-v1",
+  "algorithm": "SHA256",
+  "files": {
+    "agents/openai.yaml": "b5c6cc54e0659147d4a4d4db912725e2513ccb8b46483775644e05c0893288f1",
+    "references/input-contract.md": "3755dce298124260997b7240478b9f4fbd934faed143952054ed635ec05b4cb2",
+    "references/review-rules.md": "5601310f6a5cba7e9edc362cf5a2564ae7c5c1a91303f3da35cb0ba3a90e042e",
+    "references/THIRD_PARTY_NOTICES.md": "c56b28c78f9e27c032c94179269eb94f7846e348d2a7f9fb4cb28ea3afcd2532",
+    "scripts/cli.js": "3e21f7aa205edd68c24856e9ad40ab0e2d84d29a0785c50bfdd444c27d3e3b67",
+    "scripts/file-import.js": "196a75355381bec89142cb001c43dca8303af33877209a50e796127ce493a137",
+    "scripts/third-party/quality-docs-validator-LICENSE.txt": "73229c7fcdd13daecf69f4f879e14eb1bfc42fc18846cea13e22135430e56d85",
+    "scripts/third-party/Quality-Engineering-Skills-LICENSE.txt": "ab5685bed15dca9313f61c5bef1c307bec7b1f90e1cc15035d148215dbf8f76b",
+    "scripts/third-party/QualityMind-RAG-LICENSE.txt": "646de6d6ce6f746fdb6fda68dbc551ba27ea00941c96ffee0db27033d0970c1f",
+    "scripts/tools/extract.py": "a6dad077e340f61f89ffc043adc26bdfc17a257adf129202ef9f60e5b2af2afb",
+    "scripts/vendor/SHEETJS-LICENSE.txt": "4d2a38ac35cda06a555c84074a819d413339cd3691b822cae50f8f322fe01f64",
+    "scripts/vendor/xlsx.full.min.js": "cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41",
+    "scripts/workbench-core.js": "71ccdcd4def824dedced06df614080c6eabbbf9020dbe2a6bc8eba5356f4479d",
+    "scripts/workbench-report.js": "1190b24f6523a150c93ce091d15717de3a7dbc9048884b471803d0b246f08cb6",
+    "SKILL.md": "d62a51d1d7f76093dd0a7801fdd0220328d2601efe61205e155ff01f8fe4e6bc"
+  }
+}
